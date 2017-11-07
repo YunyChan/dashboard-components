@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>demo - modal</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../dist/components.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button class="btn btn-primary" id="simple">简易弹窗</button>
+        <button class="btn btn-primary" id="advanced">高级弹窗</button>
+    </div>
+    <script type="text/template" id="advanced-modal-template">
+        <div class="m-demo-modal">
+            <p class="m-demo-modal-normal-text">我是段落文字</p>
+            <p class="m-demo-modal-dynamic-text">此段落文字将会被动态变更</p>
+            <a href="javascript:;" class="btn btn-default m-demo-modal-btn">我是按钮</a>
+        </div>
+    </script>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+    <script type="text/javascript" src="./../dist/components.js"></script>
+    <script>
+        (function () {
+            var simpleModal = new Components.Modal({
+                title: '我是弹窗标题',
+                text: '网络异常', // 可以是文本，也可以是html字符串
+                onOK: function () {
+                    // 点击“确认”按钮事件回调
+                    alert('onOK');
+                },
+                onCancel: function () {
+                    // 点击“取消”按钮事件回调
+                    alert('onCancel');
+                },
+                onClose: function () {
+                    // 弹窗关闭事件回调
+                    alert('onClose');
+                }
+            });
+
+            var advancedModal = new Components.Modal({
+                title: '我是高级弹窗',
+                text: document.getElementById('advanced-modal-template').innerHTML,
+                doms: {
+                    normalText: '.m-demo-modal-normal-text',
+                    dynamicText: '.m-demo-modal-dynamic-text'
+                },
+                events: {
+                    '.m-demo-modal-btn': function () {
+                        // 按钮点击回调
+                        alert('m-demo-modal-btn click!!');
+                    }
+                },
+                init: function (params) {
+                    // 弹窗渲染完毕回调
+                    // alert('init');
+                    // 回到里的this是当前弹窗对象的引用
+                    this.doms.dynamicText.innerText = '动态改变后的文字'
+                },
+                onShow: function () {
+                    // 弹窗显示回调
+                    alert('onShow');
+                    // 回到里的this是当前弹窗对象的引用
+                    alert(this.doms.normalText.innerText);
+                },
+                onOK: function () {
+                    // 点击“确认”按钮事件回调
+                    alert('onOK');
+                }
+            });
+
+            document.getElementById('simple').addEventListener('click', function () {
+                simpleModal.show();
+            }, false);
+
+            document.getElementById('advanced').addEventListener('click', function () {
+                advancedModal.show();
+            }, false);
+        })()
+    </script>
+</body>
+
+</html>

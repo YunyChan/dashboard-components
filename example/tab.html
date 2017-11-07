@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>demo - tab</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../dist/components.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <div class="c-tab" id="tab">
+                <ul class="c-tab-hd f-clear">
+                    <li class="c-tab-entry c-tab-entry-active">
+                        <span class="c-tab-entry-txt">默认Tab</span>
+                    </li>
+                    <li class="c-tab-entry c-tip-anchor">
+                        <span class="c-tab-entry-txt">悬浮提示Tab</span>
+                        <div class="c-tip">
+                            <div class="c-tip-wrap">我是提示内容</div>
+                        </div>
+                    </li>
+                    <li class="c-tab-entry c-tip-anchor">
+                        <span class="c-tab-entry-txt">Tab3</span>
+                        <div class="c-tip">
+                            <div class="c-tip-wrap">Tab3</div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="c-tab-bd">
+                    <div class="c-tab-panel c-tab-panel-active">
+                        <p>默认Tab</p>
+                    </div>
+                    <div class="c-tab-panel">
+                        <p>悬浮提示Tab</p>
+                    </div>
+                    <div class="c-tab-panel">
+                        <p>Tab3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+    <script type="text/javascript" src="./../dist/components.js"></script>
+    <script>
+        (function () {
+            new Components.Tab({
+                target: document.getElementById('tab'),
+                default: 0, // 从0开始
+                onChange: function (idx, panel, entry) {
+                    console.log(idx);
+                }
+            });
+        })()
+    </script>
+</body>
+
+</html>

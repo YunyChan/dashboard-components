@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>demo - pager</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../dist/components.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pager"></div>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+    <script type="text/javascript" src="./../dist/components.js"></script>
+    <script>
+        (function () {
+            new Components.Pager({
+                target: document.getElementById('pager'),
+                page: 1, // 从1开始
+                size: 15,
+                total: 42,
+                onChange: function (pageNo) {
+                    console.log(pageNo);
+                }
+            });
+        })()
+    </script>
+</body>
+
+</html>
