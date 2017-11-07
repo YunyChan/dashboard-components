@@ -38,7 +38,7 @@ function Render() {
         full: this.conf.full,
         list: this.conf.list,
         data: this.conf.data,
-        chinese: this.conf.chinese,
+        titles: this.conf.titles,
         methods: this.conf.methods
     });
 

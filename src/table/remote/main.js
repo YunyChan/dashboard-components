@@ -35,7 +35,7 @@ function Render() {
         keys: this.conf.keys,
         full: this.conf.full,
         data: this.conf.data,
-        chinese: this.conf.chinese,
+        titles: this.conf.titles,
         methods: this.conf.methods
     });
     this.pager = new Pager({

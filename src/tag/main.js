@@ -6,7 +6,7 @@ var tpl = require('./tpl.html');
 function Tag(conf) {
     this.target = conf.target;
     this.conf = conf;
-    this.chinese = conf.chinese;
+    this.titles = conf.titles;
     this.render();
     this.setData(conf.data);
     this.inited = true;
@@ -50,7 +50,7 @@ function FormatData(data){
                 key: o
             };
         }
-        o.title = o.title || (this.chinese && this.chinese[o.key]) || '';
+        o.title = o.title || (this.titles && this.titles[o.key]) || '';
         if(o.active){
             hasActive = true;
             o.active = true;

@@ -7,7 +7,7 @@ function Table(conf) {
     this.conf = conf;
     this.target = conf.target;
     this.full = conf.full === undefined ? (conf.keys.length > AutoFullMaxKeyLength) :  conf.full;
-    this.chinese = conf.chinese;
+    this.titles = conf.titles;
     this.render();
     if(conf.list){
         this.update(conf.list);
@@ -79,10 +79,10 @@ function RenderHeader(){
         if(typeof o == 'string'){
             headers.push({
                 key: o,
-                title: (this.chinese && this.chinese[o]) || o
+                title: (this.titles && this.titles[o]) || o
             });
         }else{
-            o['title'] = o['title'] || (this.chinese && this.chinese[o['key']]) || o['key'];
+            o['title'] = o['title'] || (this.titles && this.titles[o['key']]) || o['key'];
             headers.push(o);
         }
     }
