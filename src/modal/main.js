@@ -3,23 +3,23 @@ var $ = require('jquery');
 var tpl = require('./tpl.html');
 var MVC = require('mvc');
 
-function Modal(params) {
-    this.params = params;
-    this.title = params.title || '提示';
-    this.ok = params.ok || '确认';
-    this.animation = params.animation || 'fade';
-    this.className = params.className;
+function Modal(conf) {
+    this.conf = conf;
+    this.title = conf.title || '提示';
+    this.ok = conf.ok || '确认';
+    this.animation = conf.animation || 'fade';
+    this.className = conf.className;
 
-    if (params.doms) {
+    if (conf.doms) {
         var doms = this.doms;
-        for (var key in params.doms) {
-            doms[key] = params.doms[key];
+        for (var key in conf.doms) {
+            doms[key] = conf.doms[key];
         }
     }
-    if (params.events) {
+    if (conf.events) {
         var events = this.events;
-        for (var key in params.events) {
-            events[key] = params.events[key];
+        for (var key in conf.events) {
+            events[key] = conf.events[key];
         }
     }
     this.render();
@@ -59,7 +59,7 @@ function BeforeRender() {
     var dom = document.createElement('div');
     dom.className = 'c-modal modal';
     dom.innerHTML = tpl;
-    dom.querySelector('.modal-body').innerHTML = this.params.text;
+    dom.querySelector('.modal-body').innerHTML = this.conf.text;
     $(dom).addClass(this.className).addClass(this.animation)
     this.target = dom;
 }
@@ -71,12 +71,12 @@ function Render() {
     this.doms.ok.innerText = this.ok;
     document.body.appendChild(this.dom);
 
-    var handler = this.params['init'];
-    handler && handler.call(this, this.params);
+    var handler = this.conf['init'];
+    handler && handler.call(this, this.conf);
 }
 
 function OnOKClick() {
-    var handler = this.params['onOK'];
+    var handler = this.conf['onOK'];
     var result = handler && handler.call(this);
     if (result !== false) {
         this.onClose();
@@ -84,19 +84,19 @@ function OnOKClick() {
 }
 
 function OnCancelClick() {
-    var handler = this.params['onCancel'];
+    var handler = this.conf['onCancel'];
     handler && handler.call(this);
     this.onClose();
 }
 
 function OnClose() {
-    var handler = this.params['onClose'];
+    var handler = this.conf['onClose'];
     handler && handler.call(this);
     this.hide();
 }
 
 function OnShow() {
-    var handler = this.params['onShow'];
+    var handler = this.conf['onShow'];
     handler && handler.apply(this, arguments);
 }
 

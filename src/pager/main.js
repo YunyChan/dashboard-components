@@ -2,20 +2,20 @@ require('./style.scss');
 var tpl = require('./tpl.html');
 var Vue = require('vue');
 
-function Pager(params) {
-    this.params = params;
+function Pager(conf) {
+    this.conf = conf;
     this.isInited = false;
-    this.itemTotal = params.total || 0;
-    this.pageLength = params.size || 10;
+    this.itemTotal = conf.total || 0;
+    this.pageLength = conf.size || 10;
     this.pageTotal = Math.ceil(this.itemTotal / this.pageLength) || 1;
 
-    this.firstpageNo = params.start === undefined ? 1 : params.start;
+    this.firstpageNo = conf.start === undefined ? 1 : conf.start;
     this.lastpageNo = this.pageTotal + (this.firstpageNo - 1);
 
-    this.pageNo = params.page || this.firstpageNo || 0;
+    this.pageNo = conf.page || this.firstpageNo || 0;
 
-    this.visibleLength = params.visible || 5;
-    this.url = (params.url && params.url.replace(/\s/g, '')) || 'javascript:;';
+    this.visibleLength = conf.visible || 5;
+    this.url = (conf.url && conf.url.replace(/\s/g, '')) || 'javascript:;';
 
     this.pages = this.gerneratePages();
 
@@ -42,7 +42,7 @@ Pager.prototype = {
 function Render() {
     var that = this;
     var dom = document.createElement('div');
-    this.params.target.appendChild(dom);
+    this.conf.target.appendChild(dom);
 
     this.main = new Vue({
         el: dom,
@@ -140,7 +140,7 @@ function OnJump(jumpPage){
 
 function OnChange() {
     if (this.isInited) {
-        var handler = this.params.onChange;
+        var handler = this.conf.onChange;
         handler && handler.call(this, this.pageNo);
     }
 }

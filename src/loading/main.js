@@ -6,8 +6,8 @@ var Rendered = false;
 var Mask = null;
 var Wrap = null;
 
-function Loading(p) {
-    this.params = p;
+function Loading(conf) {
+    this.conf = conf;
     this.render();
 }
 

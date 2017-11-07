@@ -2,9 +2,9 @@ require('./style.scss');
 var $ = require('jquery');
 var MVC = require('mvc');
 
-function Tab(params) {
-    this.params = params;
-    this.index = params.default === undefined ? 0 : params.default;
+function Tab(conf) {
+    this.conf = conf;
+    this.index = conf.default === undefined ? 0 : conf.default;
     this.render();
 }
 
@@ -59,11 +59,11 @@ function Change(index) {
             $(item).removeClass('c-tab-entry-active');
         }
     });
-    if(this.params.single){
+    if(this.conf.single){
 
     }
     $(this.doms.body).find('.c-tab-panel').each(function (index, item) {
-        if(self.params.single){
+        if(self.conf.single){
             $(item).addClass('c-tab-panel-active');
         }else{
             if (index == currentIndex) {
@@ -74,7 +74,7 @@ function Change(index) {
             }
         }
     });
-    var handler = this.params['onChange'];
+    var handler = this.conf['onChange'];
     handler && handler.call(this, index, panel, entry);
 }
 
