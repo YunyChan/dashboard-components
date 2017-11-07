@@ -1,0 +1,56 @@
+.c-pager{
+    text-align: right;
+    padding: 16px 0 0;
+}
+.c-pager-summary{
+    display: inline-block;
+    margin-right: 8px;
+    color: #999999;
+    vertical-align: middle;
+}
+.c-pager-jump{
+    display: inline-block;
+    vertical-align: middle;
+}
+.c-pager-jump input{
+    width: 40px;
+    padding: 2px;
+    line-height: 16px;
+    text-align: center;
+}
+.c-pager-jump a{
+    padding-left: 4px;
+}
+.c-pager-list{
+    display: inline-block;
+    margin: 0;
+}
+.c-pager-item{
+    display: inline-block;
+    border-radius: 4px;
+    border: none !important;
+}
+.c-pager-item a{
+    display: inline-block;
+    padding: 3px 8px;
+    color: #666;
+    text-decoration: none;
+}
+.c-pager-item-active{
+    background-color: #438EB9;
+}
+.c-pager-item-active a{
+    color: #ffffff;
+}
+
+.c-pager-item-disable{
+}
+.c-pager-item-disable a{
+    color: #bbb;
+    cursor: not-allowed;
+}
+.c-pager-ellipsis{
+    display: inline-block;
+    margin: 0 4px;
+    color: #999999;
+}

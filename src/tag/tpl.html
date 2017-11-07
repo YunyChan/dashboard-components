@@ -1,0 +1,10 @@
+<div class="c-tag">
+    <ul class="c-tag-list">
+        <li class="c-tag-item" v-for="tag in tags" v-bind:class="{ 'c-tip-anchor': tag.tip }">
+            <a class="c-tag-btn btn" href="javascript:;" v-on:click="itemClick(tag)" v-bind:class="{ 'btn-default': !tag.active, 'btn-primary': tag.active }">{{ tag.title }}</a>
+            <div class="c-tip" v-if="tag.tip">
+                <div class="c-tip-wrap" v-html="tag.tip"></div>
+            </div>
+        </li>
+    </ul>
+</div>

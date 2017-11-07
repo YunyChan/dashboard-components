@@ -1,0 +1,96 @@
+.c-table{
+    position: relative;
+    font-size: 14px;
+}
+.c-table table{
+    width: 100%;
+}
+.c-table thead{
+    color: #999999;
+    background-color: #f4f4f4;
+}
+.c-table tbody{
+    height: 36px;
+}
+.c-table tr{
+    transition: background-color .25s ease;
+}
+.c-table tr:nth-child(even){
+    background-color: #fafafa;
+}
+.c-table tbody tr:hover{
+    background: #eef1f6;
+}
+.c-table th,
+.c-table td{
+    padding: 12px 10px;
+    color: #666;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.c-table th{
+    padding: 18px 10px;
+    color: #333;
+    font-weight: bold;
+}
+.c-table td{
+    
+}
+
+.c-table-empty{
+    padding: 50px 0 !important;
+    color: #BDBDBD !important;
+    text-align: center !important;
+}
+.c-table-empty i{
+    margin-right: 10px;
+    font-size: 28px;
+    vertical-align: middle;
+}
+
+.c-table-id{
+    width: 50px;
+}
+.c-table-operation{
+    margin-right: 5px;
+}
+.c-table-footer{
+    padding: 12px 0;
+}
+.c-table-footer .c-table-operation{
+    float: left;
+}
+.c-table-footer .c-table-operation .c-btn{
+    margin-right: 8px;
+}
+.c-table-footer .c-pager{
+    padding-top: 4px;
+}
+
+.c-table-summary{
+    display: none;
+    position: relative;
+    top: -39px;
+    padding-left: 10px; 
+    color: #999999;
+    font-size: 14px;
+}
+.c-table-summary strong{
+    color: #F44336;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.c-table-full{
+    overflow: auto;
+    table{
+        width: auto;
+        min-width: 100%;
+        td,
+        th{
+            word-break: keep-all;
+            white-space:nowrap;
+        }
+    }
+}

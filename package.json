@@ -1,0 +1,32 @@
+{
+  "name": "dashboard-components",
+  "version": "1.0.0",
+  "description": "A components collection of dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YunyChan/dashboard-components.git"
+  },
+  "keywords": [
+    "components",
+    "dashboard"
+  ],
+  "author": "yuny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YunyChan/dashboard-components/issues"
+  },
+  "homepage": "https://github.com/YunyChan/dashboard-components#readme",
+  "dependencies": {
+    "blueimp-file-upload": "^9.19.1",
+    "bootstrap": "^3.3.7",
+    "daterangepicker": "^2.1.25",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.1",
+    "mvc": "https://github.com/YunyChan/mvc.git",
+    "vue": "^2.5.3"
+  }
+}

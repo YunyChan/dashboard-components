@@ -1,0 +1,229 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "./src/table/style.scss";
+@import "./src/panel/style.scss";
+
+.c-mask{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1999;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+.c-global-loading{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: none;
+    text-align: center;
+}
+.c-global-loading:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+}
+
+.c-global-loading .c-loading{
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+// Note组件
+.c-note{
+
+}
+.c-note-list{
+    overflow: hidden;
+    margin: 0;
+}
+.c-note-item{
+    float: left;
+    width: 25%;
+    height: 160px;
+    padding: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    border-right: 1px solid #f2f2f2;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+.c-note-item:hover{
+    box-shadow: 2px 2px 10px #bdbdbd;
+}
+
+// tip悬浮组件
+
+.c-tip{
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    min-width: 200px;
+    padding-top: 8px;
+    z-index: 10;
+}
+.c-tip-anchor{
+    position: relative;
+}
+.c-tip-anchor:hover .c-tip{
+    display: block;
+}
+.c-tip:before{
+    content: '.';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    width: 0;
+    height: 0;
+    text-indent: 9999px;
+    overflow: hidden;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(55, 60, 71, 0.8);
+}
+.c-tip-wrap{
+    padding: 20px;
+    line-height: normal;
+    color: #ffffff;
+    background: rgba(55, 60, 71, 0.8);
+    border-radius: 4px;
+}
+
+
+// page页面组件
+.c-page-title{
+    font-size: 16px;
+    margin-bottom: 18px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.c-page-header{
+    min-height: 66px;
+    margin-bottom: 20px;
+    padding: 16px 0;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 10px #bdbdbd;
+}
+
+.c-page-header{
+    min-height: 66px;
+    margin-bottom: 20px;
+    padding: 16px 0;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 10px #bdbdbd;
+}
+
+.c-page-header .row{
+    position: relative;
+    margin: 0;
+}
+.c-page-header-extra{
+    text-align: right;
+}
+
+
+
+// pageBar
+.m-pagebar{
+    float: right; 
+    border:1px solid #ddd;
+ }
+ .m-pagebar-list{
+     font-size: 0px;
+     border: 1px solid #ddd;   
+ }
+ .m-pagebar-list li, .m-pagebar a{
+     display: inline-block;
+     font-size: 14px;
+     text-align:center;
+     cursor: pointer;
+     width: 36px;
+     height: 32px;
+     vertical-align: top;
+     line-height: 32px;
+ }
+ 
+ .m-pagebar input{
+     border:1px solid #ddd;
+     border-top:none;
+     border-bottom:none;
+     width:50px;
+     height:30px;
+     outline: none;
+     padding:0 6px
+ }
+ .m-pagebar-list li.m-page-curr,  .m-pagebar a.current {
+     background-color: #00A2CA;
+     font-weight: bold;
+     color: #fff;
+     text-decoration: none;
+ }
+ .m-pagebar-list li.m-pagebar-num:hover, .m-pagebar a:hover{
+     background-color: #33B5D4;
+     color: #fff;
+ }
+ .m-pagebar-list li.m-pagebar-nocurr{
+     padding: 5px 4px;
+     letter-spacing: 8px;
+ }
+ .m-pagebar{
+     margin-right: 0px;
+     padding-right:0px;
+     padding-left: 10px;
+ }
+ 
+ .m-pagebar-select select{
+     outline: none;
+     -webkit-appearance: none;
+     border: none;
+     padding:0px 10px;
+     background-color: #3AC0FF;
+ }
+ .m-pagebar-list li.m-pagebar-select, .m-pagebar-list li.m-pagebar-total{
+     background-color: #3AC0FF;
+     color: #fff;
+     padding:5px 0;
+     padding-right: 5px;
+ }
+ .m-pagebar-list li.m-pagebar-total{
+     padding-right: 10px;
+ 
+ }
+ .m-pagebar-total:before{
+     content: '';
+     width: 1px;
+     height: 12px;
+     background: #fff;
+     display: inline-block;
+     margin-right: 5px;
+     vertical-align: -1px;
+ }
+ .disabledPage .prevPage, .disabledlast .lastPage{
+     color: #ddd !important;
+     background: #efefef !important;
+     cursor: default;
+ }
+ .disabledPage .prevPage:hover, .disabledlast .lastPage:hover{
+     color: #ddd !important;
+     background: #efefef !important;
+ }
+ 
+ .pageText, .inlineText{ display: inline-block;vertical-align: middle; line-height: 30px;}
+ .inlineText{ border-right: 1px solid #ddd; padding-right: 10px;}
+ .m-pagebar select{
+     display: inline-block;vertical-align: middle; line-height: 30px;
+     height: 30px;
+     width: 50px;
+     border:none;
+     outline: none;
+ }
+ 
+ .mr10{ margin-right:10px;}

@@ -1,0 +1,25 @@
+<div class="c-table" v-bind:class="{ 'c-table-full': full }">
+    <table class="c-table-table">
+        <thead>
+            <tr>
+                <th v-for="item in headers" v-bind:class="item.classMap" v-bind:style="item.styleMap" v-on:click="headerClick(item)">{{ item.title }}</th>
+                <th v-if="enableDetail || enableRemove || enableEdit">操作</th>
+            </tr>
+        </thead>
+        <tbody v-if="list.length > 0">
+            <tr v-for="item in list">
+                <td v-for="hd in headers" v-bind:class="hd.classMap" v-bind:style="hd.styleMap">{{ item[hd.key] || '--' }}{{ hd.unit }}</td>
+                <td v-if="enableDetail || enableRemove || enableEdit">
+                    <button class="btn btn-primary" v-on:click="detailClick(item)" v-if="enableDetail">详情</button>
+                    <button class="btn btn-danger" v-on:click="removeClick(item)" v-if="enableRemove">删除</button>
+                    <button class="btn btn-default" v-on:click="editClick(item)" v-if="enableEdit">编辑</button>
+                </td>
+            </tr>
+        </tbody>
+        <tbody v-if="list.length == 0">
+            <tr>
+                <td class="c-table-empty" v-bind:colspan="headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)"><i class="glyphicon glyphicon-info-sign"></i><span>暂无数据</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

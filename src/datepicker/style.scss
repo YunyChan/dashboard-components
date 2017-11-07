@@ -1,0 +1,32 @@
+@import "~daterangepicker/daterangepicker.scss";
+
+.c-datepicker{
+    height: 34px;
+}
+
+.c-datepicker-wrap{
+    display: inline-block;
+    width: 230px;
+}
+.c-datepicker-shortcut{
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 6px;
+}
+
+.c-datepicker-shortcut-list{
+    margin: 0;
+}
+.c-datepicker-shortcut-item{
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.c-datepicker-shortcut-item:hover{
+    color: #f18f30;
+}
+.c-datepicker-shortcut-item-active{
+    padding-bottom: 4px;
+    color: #f18f30;
+    border-bottom: 2px solid #f18f30;
+}

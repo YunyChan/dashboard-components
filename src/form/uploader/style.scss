@@ -1,0 +1,40 @@
+.c-form-uploader{
+    position: relative;
+    min-width: 200px;
+}
+
+.c-form-uploader-input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.c-form-uploader-file{
+    display: block;
+    padding-right: 92px;
+    box-shadow: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.c-form-uploader-select{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    z-index: 0;
+}
+
+.c-form-uploader:hover .c-form-uploader-select{
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}

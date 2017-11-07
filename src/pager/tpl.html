@@ -1,0 +1,13 @@
+<div class="c-pager" id="pager">
+    <div class="c-pager-summary">共有<strong>&nbsp;{{ itemTotal }}条&nbsp;</strong>和<strong>&nbsp;{{ pageTotal }}页</strong>， 每页显示：<span class="c-pager-size">{{ pageLength }}</span>条</div>
+    <ul class="c-pager-list">
+        <li class="c-pager-item c-pager-first" v-bind:class="{ 'c-pager-item-disable': prevDisable }"><a v-bind:href="firstPage.url" v-on:click.prevent="firstClick">«</a></li>
+        <li class="c-pager-item c-pager-prev" v-bind:class="{ 'c-pager-item-disable': prevDisable }"><a v-bind:href="prevPage.url" v-on:click.prevent="prevClick">‹</a></li>
+        <li class="c-pager-ellipsis" v-show="leftEllipsis"> …</li>
+        <li class="c-pager-item" v-for="page in visiblePages" v-bind:class="{ 'c-pager-item-active': page.num == pageNo }"><a v-bind:href="page.url" v-on:click.prevent="pageClick(page.num)">{{ page.num }}</a></li>
+        <li class="c-pager-ellipsis" v-show="rightEllipsis">…</li>
+        <li class="c-pager-item c-pager-next" v-bind:class="{ 'c-pager-item-disable': nextDisable }"><a v-bind:href="nextPage.url" v-on:click.prevent="nextClick">›</a></li>
+        <li class="c-pager-item c-pager-last" v-bind:class="{ 'c-pager-item-disable': nextDisable }"><a v-bind:href="lastPage.url" v-on:click.prevent="lastClick">»</a></li>
+    </ul>
+    <div class="c-pager-jump"><input type="number" v-model.number="jumpPage"/><a href="javascript:;" v-on:click="jumpClick">Go</a></div>
+</div>
