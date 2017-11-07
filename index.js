@@ -1,3 +1,4 @@
+require('./src/style.scss');
 require('bootstrap/dist/js/bootstrap.min');
 var Datepicker = require('./src/datepicker/main');
 var Uploader = require('./src/form/uploader/main');

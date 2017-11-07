@@ -28,6 +28,7 @@ Pager.prototype = {
     onLast: OnLast,
     onPrev: OnPrev,
     onNext: OnNext,
+    onJump: OnJump,
     onChange: OnChange,
     change: Change,
     update: Update,
@@ -48,10 +49,10 @@ function Render() {
         template: tpl,
         data: {
             itemTotal: this.itemTotal,
-            pageTotal: 0,
+            pageTotal: this.pageTotal,
             pageLength: this.pageLength,
             pageNo: 0,
-            jumpPage: 1,
+            jumpPage: this.firstpageNo,
 
             visiblePages: [],
             firstPage: this.pages[this.firstpageNo - this.firstpageNo],
@@ -88,14 +89,7 @@ function Render() {
                 that.onLast();
             },
             jumpClick: function(){
-                if(this.jumpPage < this.firstPageNo){
-                    this.jumpPage = this.firstPageNo;
-                }
-                if(this.jumpPage > this.lastpageNo){
-                    this.jumpPage = this.lastpageNo;
-                }
-                that.change(this.jumpPage);
-                that.onChange(this.pageNo);
+                that.onJump(this.jumpPage);
             }
         }
     });
@@ -130,6 +124,18 @@ function OnNext() {
         this.change(this.pageNo + 1);
         this.onChange(this.pageNo);
     }
+}
+
+function OnJump(jumpPage){
+    if(jumpPage < this.firstpageNo){
+        jumpPage = this.firstpageNo;
+    }
+    if(jumpPage > this.lastpageNo){
+        jumpPage = this.lastpageNo;
+    }
+    this.main.jumpPage = jumpPage;
+    this.change(jumpPage);
+    this.onChange(this.pageNo);
 }
 
 function OnChange() {

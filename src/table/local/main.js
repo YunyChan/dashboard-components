@@ -1,7 +1,7 @@
 var MVC = require('mvc');
 var tpl = require('./tpl.html');
 var Pager = require('./../../pager/main');
-var Table = require('./../table/main');
+var Table = require('./../main');
 
 function TableLocal(conf) {
     this.conf = conf;
@@ -38,6 +38,7 @@ function Render() {
         full: this.conf.full,
         list: this.conf.list,
         data: this.conf.data,
+        chinese: this.conf.chinese,
         methods: this.conf.methods
     });
 

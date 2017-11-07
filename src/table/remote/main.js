@@ -1,7 +1,7 @@
 var MVC = require('mvc');
 var tpl = require('./tpl.html');
 var Pager = require('./../../pager/main');
-var Table = require('./../table/main');
+var Table = require('./../main');
 
 function TableRemote(conf) {
     this.conf = conf;
@@ -35,6 +35,7 @@ function Render() {
         keys: this.conf.keys,
         full: this.conf.full,
         data: this.conf.data,
+        chinese: this.conf.chinese,
         methods: this.conf.methods
     });
     this.pager = new Pager({

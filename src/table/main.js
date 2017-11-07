@@ -1,6 +1,5 @@
 var MVC = require('mvc');
 var tpl = require('./tpl.html');
-var Chinese = require('enum/chinese');
 
 var AutoFullMaxKeyLength = 6;
 
@@ -8,6 +7,7 @@ function Table(conf) {
     this.conf = conf;
     this.target = conf.target;
     this.full = conf.full === undefined ? (conf.keys.length > AutoFullMaxKeyLength) :  conf.full;
+    this.chinese = conf.chinese;
     this.render();
     if(conf.list){
         this.update(conf.list);
@@ -41,7 +41,7 @@ function Render() {
     };
     if(this.conf.data){
         for(var key in this.conf.data){
-            data[key] = data[key] || this.conf.data[key];
+            data[key] = this.conf.data[key] || data[key];
         }
     }
 
@@ -79,10 +79,10 @@ function RenderHeader(){
         if(typeof o == 'string'){
             headers.push({
                 key: o,
-                title: Chinese[o] || o
+                title: (this.chinese && this.chinese[o]) || o
             });
         }else{
-            o['title'] = o['title'] || Chinese[o['key']] || o['key'];
+            o['title'] = o['title'] || (this.chinese && this.chinese[o['key']]) || o['key'];
             headers.push(o);
         }
     }

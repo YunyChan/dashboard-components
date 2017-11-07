@@ -2,11 +2,11 @@ require('./style.scss');
 var Vue = require('vue');
 var MVC = require('mvc');
 var tpl = require('./tpl.html');
-var Chinese = require('enum/chinese');
 
 function Tag(conf) {
     this.target = conf.target;
     this.conf = conf;
+    this.chinese = conf.chinese;
     this.render();
     this.setData(conf.data);
     this.inited = true;
@@ -50,7 +50,7 @@ function FormatData(data){
                 key: o
             };
         }
-        o.title = o.title || Chinese[o.key] || '';
+        o.title = o.title || (this.chinese && this.chinese[o.key]) || '';
         if(o.active){
             hasActive = true;
             o.active = true;

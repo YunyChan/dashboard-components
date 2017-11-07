@@ -3,10 +3,11 @@ var $ = require('jquery');
 var MVC = require('mvc');
 var tpl = require('./tpl.html');
 require('blueimp-file-upload');
+var Loading = require('./../../loading/main');
 
-function Uploader(params) {
-    this.params = params;
-    this.defaultData = params.data || {};
+function Uploader(conf) {
+    this.conf = conf;
+    this.defaultData = conf.data || {};
     this.render();
 }
 
@@ -28,16 +29,16 @@ Uploader.prototype = {
 
 function Render() {
     var self = this;
-    var target = MVC.View.getDOM(this.params.target);
+    var target = MVC.View.getDOM(this.conf.target);
     target.innerHTML = tpl;
     MVC.View.render(this);
 
     var loading = null;
     $(this.doms.input).fileupload({
         autoUpload: false,
-        url: this.params.url,
+        url: this.conf.url,
         dataType: 'json',
-        paramName: this.params['paramName'] || 'file',
+        paramName: this.conf['paramName'] || 'file',
         add: function (e, data) {
             var file = data.files[0];
             var result = self.verify(file);
@@ -49,7 +50,7 @@ function Render() {
             }
         },
         submit: function (e, data) {
-            loading = app.loading();
+            loading = new Loading().show();
         },
         done: function (e, data) {
             self.onSuccess(data.result);
@@ -65,7 +66,7 @@ function Render() {
 
 function Verify(file) {
     var result = '';
-    var types = this.params.fileType;
+    var types = this.conf.fileType;
     if (types) {
         for (var cnt = 0, len = types.length; cnt < len; cnt++) {
             var i = types[cnt];
@@ -81,7 +82,7 @@ function Verify(file) {
     if (result) {
         return result;
     }
-    var handler = this.params['onVerify'];
+    var handler = this.conf['onVerify'];
     return handler && handler.call(this, file);
 }
 
@@ -105,12 +106,12 @@ function RenderFile(fileName) {
 }
 
 function OnSuccess(result) {
-    var handler = this.params['onSuccess'];
+    var handler = this.conf['onSuccess'];
     return handler && handler.call(this, result, this.currentFile);
 }
 
 function OnError() {
-    var handler = this.params['onError'];
+    var handler = this.conf['onError'];
     return handler && handler.call(this);
 }
 
