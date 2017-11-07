@@ -95,20 +95,20 @@ __webpack_require__(27);
 var tpl = __webpack_require__(34);
 var Vue = __webpack_require__(5);
 
-function Pager(params) {
-    this.params = params;
+function Pager(conf) {
+    this.conf = conf;
     this.isInited = false;
-    this.itemTotal = params.total || 0;
-    this.pageLength = params.size || 10;
+    this.itemTotal = conf.total || 0;
+    this.pageLength = conf.size || 10;
     this.pageTotal = Math.ceil(this.itemTotal / this.pageLength) || 1;
 
-    this.firstpageNo = params.start === undefined ? 1 : params.start;
+    this.firstpageNo = conf.start === undefined ? 1 : conf.start;
     this.lastpageNo = this.pageTotal + (this.firstpageNo - 1);
 
-    this.pageNo = params.page || this.firstpageNo || 0;
+    this.pageNo = conf.page || this.firstpageNo || 0;
 
-    this.visibleLength = params.visible || 5;
-    this.url = (params.url && params.url.replace(/\s/g, '')) || 'javascript:;';
+    this.visibleLength = conf.visible || 5;
+    this.url = (conf.url && conf.url.replace(/\s/g, '')) || 'javascript:;';
 
     this.pages = this.gerneratePages();
 
@@ -135,7 +135,7 @@ Pager.prototype = {
 function Render() {
     var that = this;
     var dom = document.createElement('div');
-    this.params.target.appendChild(dom);
+    this.conf.target.appendChild(dom);
 
     this.main = new Vue({
         el: dom,
@@ -233,7 +233,7 @@ function OnJump(jumpPage){
 
 function OnChange() {
     if (this.isInited) {
-        var handler = this.params.onChange;
+        var handler = this.conf.onChange;
         handler && handler.call(this, this.pageNo);
     }
 }
@@ -317,7 +317,7 @@ function Table(conf) {
     this.conf = conf;
     this.target = conf.target;
     this.full = conf.full === undefined ? (conf.keys.length > AutoFullMaxKeyLength) :  conf.full;
-    this.chinese = conf.chinese;
+    this.titles = conf.titles;
     this.render();
     if(conf.list){
         this.update(conf.list);
@@ -389,10 +389,10 @@ function RenderHeader(){
         if(typeof o == 'string'){
             headers.push({
                 key: o,
-                title: (this.chinese && this.chinese[o]) || o
+                title: (this.titles && this.titles[o]) || o
             });
         }else{
-            o['title'] = o['title'] || (this.chinese && this.chinese[o['key']]) || o['key'];
+            o['title'] = o['title'] || (this.titles && this.titles[o['key']]) || o['key'];
             headers.push(o);
         }
     }
@@ -4894,8 +4894,8 @@ var Rendered = false;
 var Mask = null;
 var Wrap = null;
 
-function Loading(p) {
-    this.params = p;
+function Loading(conf) {
+    this.conf = conf;
     this.render();
 }
 
@@ -5442,23 +5442,23 @@ var $ = __webpack_require__(0);
 var tpl = __webpack_require__(33);
 var MVC = __webpack_require__(1);
 
-function Modal(params) {
-    this.params = params;
-    this.title = params.title || '提示';
-    this.ok = params.ok || '确认';
-    this.animation = params.animation || 'fade';
-    this.className = params.className;
+function Modal(conf) {
+    this.conf = conf;
+    this.title = conf.title || '提示';
+    this.ok = conf.ok || '确认';
+    this.animation = conf.animation || 'fade';
+    this.className = conf.className;
 
-    if (params.doms) {
+    if (conf.doms) {
         var doms = this.doms;
-        for (var key in params.doms) {
-            doms[key] = params.doms[key];
+        for (var key in conf.doms) {
+            doms[key] = conf.doms[key];
         }
     }
-    if (params.events) {
+    if (conf.events) {
         var events = this.events;
-        for (var key in params.events) {
-            events[key] = params.events[key];
+        for (var key in conf.events) {
+            events[key] = conf.events[key];
         }
     }
     this.render();
@@ -5498,7 +5498,7 @@ function BeforeRender() {
     var dom = document.createElement('div');
     dom.className = 'c-modal modal';
     dom.innerHTML = tpl;
-    dom.querySelector('.modal-body').innerHTML = this.params.text;
+    dom.querySelector('.modal-body').innerHTML = this.conf.text;
     $(dom).addClass(this.className).addClass(this.animation)
     this.target = dom;
 }
@@ -5510,12 +5510,12 @@ function Render() {
     this.doms.ok.innerText = this.ok;
     document.body.appendChild(this.dom);
 
-    var handler = this.params['init'];
-    handler && handler.call(this, this.params);
+    var handler = this.conf['init'];
+    handler && handler.call(this, this.conf);
 }
 
 function OnOKClick() {
-    var handler = this.params['onOK'];
+    var handler = this.conf['onOK'];
     var result = handler && handler.call(this);
     if (result !== false) {
         this.onClose();
@@ -5523,19 +5523,19 @@ function OnOKClick() {
 }
 
 function OnCancelClick() {
-    var handler = this.params['onCancel'];
+    var handler = this.conf['onCancel'];
     handler && handler.call(this);
     this.onClose();
 }
 
 function OnClose() {
-    var handler = this.params['onClose'];
+    var handler = this.conf['onClose'];
     handler && handler.call(this);
     this.hide();
 }
 
 function OnShow() {
-    var handler = this.params['onShow'];
+    var handler = this.conf['onShow'];
     handler && handler.apply(this, arguments);
 }
 
@@ -5644,9 +5644,9 @@ __webpack_require__(28);
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
 
-function Tab(params) {
-    this.params = params;
-    this.index = params.default === undefined ? 0 : params.default;
+function Tab(conf) {
+    this.conf = conf;
+    this.index = conf.default === undefined ? 0 : conf.default;
     this.render();
 }
 
@@ -5701,11 +5701,11 @@ function Change(index) {
             $(item).removeClass('c-tab-entry-active');
         }
     });
-    if(this.params.single){
+    if(this.conf.single){
 
     }
     $(this.doms.body).find('.c-tab-panel').each(function (index, item) {
-        if(self.params.single){
+        if(self.conf.single){
             $(item).addClass('c-tab-panel-active');
         }else{
             if (index == currentIndex) {
@@ -5716,7 +5716,7 @@ function Change(index) {
             }
         }
     });
-    var handler = this.params['onChange'];
+    var handler = this.conf['onChange'];
     handler && handler.call(this, index, panel, entry);
 }
 
@@ -5766,7 +5766,7 @@ function Render() {
         full: this.conf.full,
         list: this.conf.list,
         data: this.conf.data,
-        chinese: this.conf.chinese,
+        titles: this.conf.titles,
         methods: this.conf.methods
     });
 
@@ -5843,7 +5843,7 @@ function Render() {
         keys: this.conf.keys,
         full: this.conf.full,
         data: this.conf.data,
-        chinese: this.conf.chinese,
+        titles: this.conf.titles,
         methods: this.conf.methods
     });
     this.pager = new Pager({
@@ -5884,7 +5884,7 @@ var tpl = __webpack_require__(38);
 function Tag(conf) {
     this.target = conf.target;
     this.conf = conf;
-    this.chinese = conf.chinese;
+    this.titles = conf.titles;
     this.render();
     this.setData(conf.data);
     this.inited = true;
@@ -5928,7 +5928,7 @@ function FormatData(data){
                 key: o
             };
         }
-        o.title = o.title || (this.chinese && this.chinese[o.key]) || '';
+        o.title = o.title || (this.titles && this.titles[o.key]) || '';
         if(o.active){
             hasActive = true;
             o.active = true;
