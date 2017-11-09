@@ -1,6 +1,6 @@
 require('./style.scss');
 var Vue = require('vue');
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 var tpl = require('./tpl.html');
 
 function Tag(conf) {

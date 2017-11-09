@@ -1,6 +1,6 @@
 require('./style.scss');
 var $ = require('jquery');
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 var tpl = require('./tpl.html');
 require('blueimp-file-upload');
 var Loading = require('./../../loading/main');

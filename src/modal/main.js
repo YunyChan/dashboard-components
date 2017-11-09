@@ -1,7 +1,7 @@
 require('./style.scss');
 var $ = require('jquery');
 var tpl = require('./tpl.html');
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 
 function Modal(conf) {
     this.conf = conf;

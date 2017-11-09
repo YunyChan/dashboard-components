@@ -1,7 +1,7 @@
 require('./style.scss');
 require('daterangepicker');
 var $ = require('jquery');
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 var tpl = require('./tpl.html');
 var moment = require('moment');
 

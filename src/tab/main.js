@@ -1,6 +1,6 @@
 require('./style.scss');
 var $ = require('jquery');
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 
 function Tab(conf) {
     this.conf = conf;

@@ -1,4 +1,4 @@
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 var tpl = require('./tpl.html');
 
 var AutoFullMaxKeyLength = 6;

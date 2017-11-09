@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var MVC = require('mvc');
+var MVC = require('plugin-mvc');
 
 function Panel(conf) {
     this.target = conf.target;
