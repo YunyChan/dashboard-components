@@ -30,3 +30,61 @@
     color: #f18f30;
     border-bottom: 2px solid #f18f30;
 }
+
+.c-datepicker {
+    .daterangepicker{
+        padding-bottom: 40px;
+    }
+    .daterangepicker .ranges:before{
+        content: '时间范围';
+        display: block;
+        text-align: center;
+        font-size: 14px;
+    }
+    .daterangepicker .ranges li{
+        margin: 12px 0 0;
+        line-height: 24px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .daterangepicker .ranges li[data-range-key='上周'],
+    .daterangepicker .ranges li[data-range-key='本周'],
+    .daterangepicker .ranges li[data-range-key='上月'],
+    .daterangepicker .ranges li[data-range-key='本月'],
+    .daterangepicker .ranges li[data-range-key='上季'],
+    .daterangepicker .ranges li[data-range-key='本季']{
+        display: inline-block;
+        width: 46%;
+    }
+    .daterangepicker .ranges li[data-range-key='上周'],
+    .daterangepicker .ranges li[data-range-key='上月'],
+    .daterangepicker .ranges li[data-range-key='上季']{
+        margin-right: 8%;
+    }
+    .daterangepicker .range_inputs{
+        position: absolute;
+        bottom: 8px;
+        right: 20px;
+    }
+    .daterangepicker .calendar .daterangepicker_input{
+        display: none;
+    }
+    .daterangepicker .calendar:before{
+        display: block;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+    .daterangepicker .calendar.left:before{
+        content: '起始时间';
+    }
+    .daterangepicker .calendar.right:before{
+        content: '终止时间';
+    }
+    .daterangepicker .calendar .calendar-table{
+        border: 1px solid #cfcfcf !important;
+        padding: 4px;
+    }
+    .daterangepicker .calendar.left .calendar-table{
+        margin-right: 8px;
+    }
+}

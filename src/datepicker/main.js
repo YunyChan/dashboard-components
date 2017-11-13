@@ -36,7 +36,48 @@ function Render() {
     var self = this;
     MVC.View.render(this);
     var conf = {
+        parentEl: '.c-datepicker',
         showDropdowns: false,
+        showCustomRangeLabel: false,
+        alwaysShowCalendars: true,
+        ranges: {
+            '昨天': [
+                moment().subtract(1, 'd'),
+                moment().subtract(1, 'd')
+            ],
+            '上周': [
+                moment().subtract(1, 'weeks').startOf('isoWeek'),
+                moment().subtract(1, 'weeks').endOf('isoWeek')
+            ],
+            '本周': [
+                moment().startOf('isoWeek'),
+                moment().endOf('isoWeek')
+            ],
+            '上月': [
+                moment().subtract(1, 'months').startOf('month'),
+                moment().subtract(1, 'months').endOf('month')
+            ],
+            '本月': [
+                moment().startOf('month'),
+                moment().endOf('month')
+            ],
+            '上季': [
+                moment().subtract(1, 'quarters').startOf('quarter'),
+                moment().subtract(1, 'quarters').endOf('quarter')
+            ],
+            '本季': [
+                moment().startOf('quarter'),
+                moment().endOf('quarter')
+            ],
+            '过去7天': [
+                moment().subtract(7, 'd'),
+                moment().subtract(1, 'd')
+            ],
+            '过去30天': [
+                moment().subtract(30, 'd'),
+                moment().subtract(1, 'd')
+            ]
+        },
         locale: {
             'format': 'YYYY-MM-DD',
             'separator': '至',
@@ -71,8 +112,8 @@ function Render() {
             ],
             'firstDay': 1
         },
-        startDate: moment().subtract(7, 'd'),
-        endDate: moment().subtract(1, 'd')
+        startDate: moment().startOf('isoWeek'),
+        endDate: moment().endOf('isoWeek')
 
     }
     for (var key in this.conf.conf) {
