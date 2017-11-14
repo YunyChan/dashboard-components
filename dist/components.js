@@ -9320,6 +9320,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
         },
 
         hide: function(e) {
+            var that = this;
             if (!this.isShowing) return;
 
             //incomplete date selection, revert to last values
