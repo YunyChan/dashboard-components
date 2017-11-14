@@ -22,12 +22,13 @@
   },
   "homepage": "https://github.com/YunyChan/dashboard-components#readme",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "blueimp-file-upload": "^9.18.0",
     "bootstrap": "^3.3.7",
-    "daterangepicker": "^2.1.25",
+    "bootstrap-daterangepicker": "https://github.com/YunyChan/bootstrap-daterangepicker.git",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
-    "plugin-mvc": "git+https://github.com/YunyChan/plugin-mvc.git",
+    "plugin-mvc": "https://github.com/YunyChan/plugin-mvc.git",
     "reset-css": "^2.2.0",
     "vue": "^2.2.4"
   },

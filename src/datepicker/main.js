@@ -1,5 +1,5 @@
 require('./style.scss');
-require('daterangepicker');
+require('bootstrap-daterangepicker');
 var $ = require('jquery');
 var MVC = require('plugin-mvc');
 var tpl = require('./tpl.html');
@@ -33,7 +33,7 @@ function BeforeRender() {
 };
 
 function Render() {
-    var self = this;
+    var that = this;
     MVC.View.render(this);
     var conf = {
         parentEl: '.c-datepicker',
@@ -121,19 +121,27 @@ function Render() {
     }
     var $input = this.$input = $(this.doms.input).daterangepicker(conf);
     $input.on('apply.daterangepicker', function (ev, picker) {
-        self.onShortcutClick(null);
-        self.onChange();
+        that.onShortcutClick(null);
+        that.onChange();
     });
 
-    // $input.on('show.daterangepicker', function(ev, picker) {
-    //     $input.addClass('animated fadeInDown');
-    //     $input.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-    //         $input.removeClass('animated fadeInDown');
-    //     });
-    // });
-    // $input.on('hide.daterangepicker', function(ev, picker) {
-    //     debugger;
-    // });
+
+    $input.on('show.daterangepicker', function(ev, picker) {
+        var $dom = $(that.dom).find('.daterangepicker');
+        $dom.addClass('animated fadeInDown');
+        $dom.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $dom.removeClass('animated fadeInDown');
+        });
+    });
+    $input.on('beforeHide.daterangepicker', function(ev, picker) {
+        var $dom = $(that.dom).find('.daterangepicker');
+        $dom.addClass('animated fadeOutUp');
+        $dom.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $dom.removeClass('animated fadeOutUp');
+            picker.__HideCallback();
+        });
+        picker.__HideCallback = true;
+    });
 
     this.onChange();
 };
