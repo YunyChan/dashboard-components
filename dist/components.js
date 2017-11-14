@@ -5275,11 +5275,21 @@ function Render() {
     for (var key in this.conf.conf) {
         conf[key] = this.conf.conf[key];
     }
-    this.$input = $(this.doms.input).daterangepicker(conf);
-    this.$input.on('apply.daterangepicker', function (ev, picker) {
+    var $input = this.$input = $(this.doms.input).daterangepicker(conf);
+    $input.on('apply.daterangepicker', function (ev, picker) {
         self.onShortcutClick(null);
         self.onChange();
     });
+
+    // $input.on('show.daterangepicker', function(ev, picker) {
+    //     $input.addClass('animated fadeInDown');
+    //     $input.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+    //         $input.removeClass('animated fadeInDown');
+    //     });
+    // });
+    // $input.on('hide.daterangepicker', function(ev, picker) {
+    //     debugger;
+    // });
 
     this.onChange();
 };
@@ -9794,7 +9804,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 /* 30 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-datepicker\">\r\n    <div class=\"c-datepicker-wrap\">\r\n        <div class=\"input-group\">\r\n            <input type=\"text\" value=\"--\" class=\"form-control c-datepicker-input\">\r\n            <div class=\"input-group-addon\"><i class=\"glyphicon glyphicon-calendar\"></i></div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-datepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-datepicker-shortcut-list\">\r\n            <!-- <li class=\"c-datepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-datepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-datepicker-shortcut-item c-datepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-datepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-datepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"c-datepicker\">\r\n    <div class=\"c-datepicker-wrap\">\r\n        <i class=\"glyphicon glyphicon-calendar\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-datepicker-input\">\r\n    </div>\r\n    <div class=\"c-datepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-datepicker-shortcut-list\">\r\n            <!-- <li class=\"c-datepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-datepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-datepicker-shortcut-item c-datepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-datepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-datepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 31 */

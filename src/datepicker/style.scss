@@ -5,8 +5,17 @@
 }
 
 .c-datepicker-wrap{
+    position: relative;
     display: inline-block;
     width: 230px;
+}
+.c-datepicker-wrap i{
+    position: absolute;
+    top: 10px;
+    left: 12px;
+}
+.c-datepicker-input{
+    padding-left: 32px;
 }
 .c-datepicker-shortcut{
     display: inline-block;

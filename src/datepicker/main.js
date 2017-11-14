@@ -119,11 +119,21 @@ function Render() {
     for (var key in this.conf.conf) {
         conf[key] = this.conf.conf[key];
     }
-    this.$input = $(this.doms.input).daterangepicker(conf);
-    this.$input.on('apply.daterangepicker', function (ev, picker) {
+    var $input = this.$input = $(this.doms.input).daterangepicker(conf);
+    $input.on('apply.daterangepicker', function (ev, picker) {
         self.onShortcutClick(null);
         self.onChange();
     });
+
+    // $input.on('show.daterangepicker', function(ev, picker) {
+    //     $input.addClass('animated fadeInDown');
+    //     $input.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+    //         $input.removeClass('animated fadeInDown');
+    //     });
+    // });
+    // $input.on('hide.daterangepicker', function(ev, picker) {
+    //     debugger;
+    // });
 
     this.onChange();
 };
