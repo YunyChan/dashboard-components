@@ -7,7 +7,7 @@
 .c-datepicker-wrap{
     position: relative;
     display: inline-block;
-    width: 230px;
+    width: 210px;
 }
 .c-datepicker-wrap i{
     position: absolute;
@@ -15,7 +15,7 @@
     left: 12px;
 }
 .c-datepicker-input{
-    padding-left: 32px;
+    padding-left: 32px !important;
 }
 .c-datepicker-shortcut{
     display: inline-block;
