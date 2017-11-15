@@ -4,7 +4,6 @@ var MVC = require('plugin-mvc');
 var tpl = require('./tpl.html');
 var Vue = require('vue');
 var $ = require('jquery');
-var defaultIcon = require('./default.png');
 
 var Colors = ['rgb(255, 94, 60)', 'rgb(121, 200, 12)', 'rgb(30, 187, 164)', 'rgb(30, 187, 164)', 'rgb(254, 148, 4)'];
 

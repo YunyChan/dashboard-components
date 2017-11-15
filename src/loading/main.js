@@ -2,7 +2,6 @@ require('./style.scss');
 var tpl = require('./tpl.html');
 
 var LoadingCounter = 0;
-var Rendered = false;
 var Mask = null;
 var Wrap = null;
 
@@ -20,17 +19,24 @@ Loading.prototype = {
 module.exports = Loading;
 
 function Render() {
-    if (Rendered) {
-        return;
+    var mask = document.body.querySelector('.c-mask');
+    var wrap = document.body.querySelector('.c-global-loading');
+    if (mask && wrap) {
+        if(mask.style.display == 'block' && wrap.style.display == 'block'){
+            LoadingCounter ++;
+        }
+    }else{
+        mask = document.createElement('div');
+        mask.className = 'c-mask';
+        document.body.appendChild(mask);
+
+        wrap = document.createElement('div');
+        wrap.className = 'c-global-loading';
+        wrap.innerHTML = tpl;
+        document.body.appendChild(wrap);
     }
-    Mask = document.createElement('div');
-    Wrap = document.createElement('div');
-    Mask.className = 'c-mask';
-    Wrap.className = 'c-global-loading';
-    Wrap.innerHTML = tpl;
-    document.body.appendChild(Mask);
-    document.body.appendChild(Wrap);
-    Rendered = true;
+    Mask = mask;
+    Wrap = wrap;
 }
 
 function Show() {
@@ -43,10 +49,14 @@ function Show() {
 }
 
 function Hide() {
-    LoadingCounter--;
-    if (LoadingCounter == 0) {
-        Wrap.style.display = 'none';
-        Mask.style.display = 'none';
+    if(Mask.style.display == '' && Wrap.style.display == ''){
+
+    }else{
+        LoadingCounter--;
+        if (LoadingCounter == 0) {
+            Mask.style.display = '';
+            Wrap.style.display = '';
+        }
     }
     return this;
 }

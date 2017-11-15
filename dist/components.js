@@ -4931,7 +4931,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(47)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(46)(module)))
 
 /***/ }),
 /* 6 */
@@ -4941,7 +4941,6 @@ __webpack_require__(26);
 var tpl = __webpack_require__(34);
 
 var LoadingCounter = 0;
-var Rendered = false;
 var Mask = null;
 var Wrap = null;
 
@@ -4959,17 +4958,24 @@ Loading.prototype = {
 module.exports = Loading;
 
 function Render() {
-    if (Rendered) {
-        return;
+    var mask = document.body.querySelector('.c-mask');
+    var wrap = document.body.querySelector('.c-global-loading');
+    if (mask && wrap) {
+        if(mask.style.display == 'block' && wrap.style.display == 'block'){
+            LoadingCounter ++;
+        }
+    }else{
+        mask = document.createElement('div');
+        mask.className = 'c-mask';
+        document.body.appendChild(mask);
+
+        wrap = document.createElement('div');
+        wrap.className = 'c-global-loading';
+        wrap.innerHTML = tpl;
+        document.body.appendChild(wrap);
     }
-    Mask = document.createElement('div');
-    Wrap = document.createElement('div');
-    Mask.className = 'c-mask';
-    Wrap.className = 'c-global-loading';
-    Wrap.innerHTML = tpl;
-    document.body.appendChild(Mask);
-    document.body.appendChild(Wrap);
-    Rendered = true;
+    Mask = mask;
+    Wrap = wrap;
 }
 
 function Show() {
@@ -4982,10 +4988,14 @@ function Show() {
 }
 
 function Hide() {
-    LoadingCounter--;
-    if (LoadingCounter == 0) {
-        Wrap.style.display = 'none';
-        Mask.style.display = 'none';
+    if(Mask.style.display == '' && Wrap.style.display == ''){
+
+    }else{
+        LoadingCounter--;
+        if (LoadingCounter == 0) {
+            Mask.style.display = '';
+            Wrap.style.display = '';
+        }
     }
     return this;
 }
@@ -5758,7 +5768,6 @@ var MVC = __webpack_require__(1);
 var tpl = __webpack_require__(37);
 var Vue = __webpack_require__(2);
 var $ = __webpack_require__(0);
-var defaultIcon = __webpack_require__(46);
 
 var Colors = ['rgb(255, 94, 60)', 'rgb(121, 200, 12)', 'rgb(30, 187, 164)', 'rgb(30, 187, 164)', 'rgb(254, 148, 4)'];
 
@@ -10962,12 +10971,6 @@ module.exports = {
 
 /***/ }),
 /* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "img/default.png";
-
-/***/ }),
-/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
