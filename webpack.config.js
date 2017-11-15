@@ -4,7 +4,6 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var ExtractCSS = new ExtractTextPlugin('components.css');
 var ExtractSASS = new ExtractTextPlugin('components.css');
 
 var conf = {
@@ -18,23 +17,6 @@ var conf = {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
-				use: ExtractCSS.extract({
-					use: [{
-						loader: "css-loader",
-						options: {
-							minimize: true
-						}
-					}, {
-						loader: 'postcss-loader',
-						options: {
-							plugins: [autoprefixer]
-						}
-					}],
-					// use style-loader in development
-					fallback: "style-loader"
-				})
-			}, {
 				test: /\.s(c|a)ss$/,
 				use: ExtractSASS.extract({
 					use: [{
@@ -85,7 +67,6 @@ var conf = {
 			Vue: 'vue',
 			echarts: 'echarts/lib/echarts'
 		}),
-		ExtractCSS,
 		ExtractSASS,
 
 		// new webpack.optimize.UglifyJsPlugin({

@@ -20,6 +20,8 @@ Tag.prototype = {
     setData: SetData
 }
 
+module.exports = Tag;
+
 function BeforeRender() {
     this.target.innerHTML = tpl;
 }
@@ -88,5 +90,3 @@ function SetData(data){
         this.change(this.current);
     }
 }
-
-module.exports = Tag;

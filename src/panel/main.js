@@ -24,6 +24,8 @@ Panel.prototype = {
     onTabChange: OnTabChange
 }
 
+module.exports = Panel;
+
 function Render(){
     MVC.View.render(this);
     this.renderTab();
@@ -68,5 +70,3 @@ function OnTabChange(targetIdx){
         }
     });
 }
-
-module.exports = Panel;

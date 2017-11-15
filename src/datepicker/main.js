@@ -28,6 +28,8 @@ DatePicker.prototype = {
     getRange: GetRange
 }
 
+module.exports = DatePicker;
+
 function BeforeRender() {
     this.target.innerHTML = tpl;
 };
@@ -199,5 +201,3 @@ function GetRange(){
         endDate: this.endDate
     }
 }
-
-module.exports = DatePicker;

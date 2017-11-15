@@ -1,0 +1,26 @@
+<div class="c-summary">
+    <div class="row c-summary-list">
+        <div v-bind:class="['col-xs-' + span]" v-for="item in list">
+            <div class="c-summary-item">
+                <div class="c-summary-item-bd">
+                    <span class="c-summary-item-title">{{ item.title }}</span>
+                    <span class="c-summary-item-value" v-bind:style="{ color: item.color }">
+                        <span class="c-summary-item-value-num odometer">--</span>
+                        <span class="c-summary-item-value-unit" v-if="item.unit">{{ item.unit }}</span>
+                    </span>
+                    <img class="c-summary-item-icon" v-bind:src="item.icon" v-if="item.icon">
+                </div>
+                <div class="c-summary-item-ft" v-bind:style="{ 'background-color': item.color }">
+                    <span class="c-summary-item-extra" v-if="item.extra">{{ item.extra }}</span>
+                    <svg width="44" height="16">
+                        <rect x="0" y="0" width="8" height="16"/>
+                        <rect x="9" y="2" width="8" height="14"/>
+                        <rect x="18" y="8" width="8" height="8"/>
+                        <rect x="27" y="6" width="8" height="10"/>
+                        <rect x="36" y="4" width="8" height="12"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@ var Loading = require('./src/loading/main');
 var Modal = require('./src/modal/main');
 var Pager = require('./src/pager/main');
 var Panel = require('./src/panel/main');
+var Summary = require('./src/summary/main');
 var Tab = require('./src/tab/main');
 var Table = require('./src/table/main');
 var TableLocal = require('./src/table/local/main');
@@ -19,6 +20,7 @@ module.exports = {
     Modal: Modal,
     Pager: Pager,
     Panel: Panel,
+    Summary: Summary,
     Tab: Tab,
     Table: Table,
     TableLocal: TableLocal,

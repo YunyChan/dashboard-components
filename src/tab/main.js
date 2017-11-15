@@ -23,6 +23,8 @@ Tab.prototype = {
     change: Change
 }
 
+module.exports = Tab;
+
 function Render() {
     var self = this;
 
@@ -77,5 +79,3 @@ function Change(index) {
     var handler = this.conf['onChange'];
     handler && handler.call(this, index, panel, entry);
 }
-
-module.exports = Tab;

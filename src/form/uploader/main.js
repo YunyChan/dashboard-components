@@ -27,6 +27,8 @@ Uploader.prototype = {
     setData: SetData
 }
 
+module.exports = Uploader;
+
 function Render() {
     var self = this;
     var target = MVC.View.getDOM(this.conf.target);
@@ -125,5 +127,3 @@ function SetData(data){
         this.defaultData[key] = data[key]
     }
 }
-
-module.exports = Uploader;

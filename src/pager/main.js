@@ -38,6 +38,7 @@ Pager.prototype = {
     isShowRightEllipsis: IsShowRightEllipsis
 }
 
+module.exports = Pager;
 
 function Render() {
     var that = this;
@@ -208,5 +209,3 @@ function IsShowRightEllipsis() {
     var halfVisibleLength = Math.floor(this.visibleLength / 2);
     return this.lastpageNo - this.pageNo > halfVisibleLength;
 }
-
-module.exports = Pager;

@@ -55,6 +55,8 @@ Modal.prototype = {
     setTitle: SetTitle
 }
 
+module.exports = Modal;
+
 function BeforeRender() {
     var dom = document.createElement('div');
     dom.className = 'c-modal modal';
@@ -117,5 +119,3 @@ function Hide() {
 function SetTitle(title) {
     this.doms.title.innerText = title;
 }
-
-module.exports = Modal;

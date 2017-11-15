@@ -26,6 +26,8 @@ Table.prototype = {
     update: Update
 }
 
+module.exports = Table;
+
 function Render() {
     var self = this;
     this.target.innerHTML = this.conf.tpl || tpl;
@@ -92,5 +94,3 @@ function RenderHeader(){
 function Update(list){
     this.table.list = list;
 }
-
-module.exports = Table;

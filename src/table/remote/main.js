@@ -24,6 +24,8 @@ TableRemote.prototype = {
     onPageChange: OnPageChange
 }
 
+module.exports = TableRemote;
+
 function Render() {
     var self = this;
     this.target.innerHTML = tpl;
@@ -61,5 +63,3 @@ function OnPageChange(pageNo){
     var handler = this.conf.onChange;
     handler && handler.call(this, pageNo);
 }
-
-module.exports = TableRemote;

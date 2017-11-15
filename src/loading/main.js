@@ -17,6 +17,8 @@ Loading.prototype = {
     hide: Hide
 }
 
+module.exports = Loading;
+
 function Render() {
     if (Rendered) {
         return;
@@ -48,5 +50,3 @@ function Hide() {
     }
     return this;
 }
-
-module.exports = Loading;

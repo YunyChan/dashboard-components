@@ -1,0 +1,54 @@
+@import '~odometer/themes/odometer-theme-default.css';
+
+.c-summary{
+
+}
+
+.c-summary-item{
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid rgb(215, 224, 241);
+}
+
+.c-summary-item-bd{
+    position: relative;
+    height: 110px;
+    padding: 20px;
+}
+.c-summary-item-title{
+    position: absolute;
+    top: 70px;
+    left: 20px;
+}
+.c-summary-item-value{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 32px;
+    z-index: 2;
+}
+.c-summary-item-icon{
+    position: absolute;
+    top: 38px;
+    right: 20px;
+    height: 48px;
+}
+
+.c-summary-item-ft{
+    position: relative;
+    height: 40px;
+    padding: 0 20px;
+    color: #fff;
+    line-height: 40px;
+}
+.c-summary-item-ft svg{
+    position: absolute;
+    top: 12px;
+    right: 20px;
+}
+.c-summary-item-ft rect{
+    stroke-width: 0;
+    fill: #fff;
+}

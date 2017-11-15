@@ -26,6 +26,8 @@ TableLocal.prototype = {
     onPageChange: OnPageChange
 }
 
+module.exports = TableLocal;
+
 function Render() {
     var self = this;
     this.target.innerHTML = tpl;
@@ -71,5 +73,3 @@ function OnPageChange(pageNo){
     }
     this.table.update(this.list.slice(start, end)); // 左闭右开
 }
-
-module.exports = TableLocal;

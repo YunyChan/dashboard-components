@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>demo - tag</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/meyer-reset/2.0/reset.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../dist/components.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="summary"></div>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
+    <script type="text/javascript" src="./../dist/components.js"></script>
+    <script>
+        (function () {
+            var summary = new Components.Summary({
+                target: document.getElementById('summary'),
+                cols: 3
+            });
+            summary.update([{
+                title: '月活跃人数',
+                value: 11111,
+                extra: 'MAU'
+            },{
+                title: '月付费人数',
+                value: 222222
+            },{
+                title: '月付费ARPPU',
+                value: 3333
+            },{
+                title: '月付费渗透率',
+                value: 44.444,
+                unit: '%'
+            },{
+                title: '月新增付费人数',
+                value: 5555555
+            },{
+                title: '月新增用户付费总额',
+                value: 666,
+                icon: 'https://www.google.co.jp/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'
+            }])
+        })()
+    </script>
+</body>
+
+</html>
