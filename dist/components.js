@@ -4943,10 +4943,12 @@ var tpl = __webpack_require__(34);
 var LoadingCounter = 0;
 var Mask = null;
 var Wrap = null;
+var Inited = false;
 
 function Loading(conf) {
     this.conf = conf;
     this.render();
+    Inited = true;
 }
 
 Loading.prototype = {
@@ -4961,9 +4963,7 @@ function Render() {
     var mask = document.body.querySelector('.c-mask');
     var wrap = document.body.querySelector('.c-global-loading');
     if (mask && wrap) {
-        if(mask.style.display == 'block' && wrap.style.display == 'block'){
-            LoadingCounter ++;
-        }
+
     }else{
         mask = document.createElement('div');
         mask.className = 'c-mask';
@@ -4974,8 +4974,13 @@ function Render() {
         wrap.innerHTML = tpl;
         document.body.appendChild(wrap);
     }
-    Mask = mask;
-    Wrap = wrap;
+    if(!Inited){
+        if(mask.style.display == 'block' && wrap.style.display == 'block'){
+            LoadingCounter ++;
+        }
+        Mask = mask;
+        Wrap = wrap;
+    }
 }
 
 function Show() {
