@@ -4941,7 +4941,6 @@ __webpack_require__(26);
 var tpl = __webpack_require__(34);
 
 var LoadingCounter = 0;
-var Mask = null;
 var Wrap = null;
 var Inited = false;
 
@@ -4960,25 +4959,19 @@ Loading.prototype = {
 module.exports = Loading;
 
 function Render() {
-    var mask = document.body.querySelector('.c-mask');
     var wrap = document.body.querySelector('.c-global-loading');
-    if (mask && wrap) {
+    if (wrap) {
 
     }else{
-        mask = document.createElement('div');
-        mask.className = 'c-mask';
-        document.body.appendChild(mask);
-
         wrap = document.createElement('div');
         wrap.className = 'c-global-loading';
         wrap.innerHTML = tpl;
         document.body.appendChild(wrap);
     }
     if(!Inited){
-        if(mask.style.display == 'block' && wrap.style.display == 'block'){
+        if(wrap.style.display == 'block'){
             LoadingCounter ++;
         }
-        Mask = mask;
         Wrap = wrap;
     }
 }
@@ -4986,19 +4979,17 @@ function Render() {
 function Show() {
     LoadingCounter++;
     if (LoadingCounter == 1) {
-        Mask.style.display = 'block';
         Wrap.style.display = 'block';
     }
     return this;
 }
 
 function Hide() {
-    if(Mask.style.display == '' && Wrap.style.display == ''){
+    if(Wrap.style.display == ''){
 
     }else{
         LoadingCounter--;
         if (LoadingCounter == 0) {
-            Mask.style.display = '';
             Wrap.style.display = '';
         }
     }
@@ -9991,7 +9982,7 @@ module.exports = "<div class=\"c-form-uploader\">\r\n    <input type=\"file\" cl
 /* 34 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-loading\">\r\n    <div class=\"c-loading-animation\">\r\n        <svg class=\"c-loading-circle\" viewBox=\"25 25 50 50\">\r\n            <circle class=\"c-loading-circle-path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\r\n        </svg>\r\n    </div>\r\n    <div class=\"c-loading-txt\"></div>\r\n</div>";
+module.exports = "<div class=\"c-loading\">\r\n    <div class=\"c-loading-animation\">\r\n        <svg class=\"c-loading-circle\" viewBox=\"20 20 40 40\">\r\n            <circle class=\"c-loading-circle-path\" cx=\"40\" cy=\"40\" r=\"10\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\r\n        </svg>\r\n    </div>\r\n    <div class=\"c-loading-txt\">加载中</div>\r\n</div>";
 
 /***/ }),
 /* 35 */

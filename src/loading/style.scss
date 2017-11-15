@@ -5,10 +5,19 @@ $yellow: #ffa700;
 $white: #eee;
 
 .c-loading{
+  width: 120px;
+  height: 120px;
+  background-color: rgba(17, 17, 17, 0.7);
+  border-radius: 5px;
+}
+.c-loading-txt{
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
 }
 .c-loading-animation{
     position: relative;
-    width: 100px;
+    width: 80px;
     margin: 0 auto;
     &:before {
         content: '';
