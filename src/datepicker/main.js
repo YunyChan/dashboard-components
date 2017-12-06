@@ -114,8 +114,8 @@ function Render() {
             ],
             'firstDay': 1
         },
-        startDate: moment().startOf('isoWeek'),
-        endDate: moment().endOf('isoWeek')
+        startDate: moment().subtract(7, 'd'),
+        endDate: moment().subtract(1, 'd')
 
     }
     for (var key in this.conf.conf) {
