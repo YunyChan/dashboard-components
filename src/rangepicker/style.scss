@@ -1,47 +1,49 @@
 @import "~bootstrap-daterangepicker/daterangepicker.scss";
+@import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.css';
 @import "~animate.css/animate.min.css";
 
-.c-datepicker{
+.c-rangepicker{
     height: 34px;
 }
 
-.c-datepicker-wrap{
+.c-rangepicker-wrap{
     position: relative;
     display: inline-block;
     width: 210px;
 }
-.c-datepicker-wrap i{
+.c-rangepicker-wrap i{
     position: absolute;
     top: 10px;
     left: 12px;
 }
-.c-datepicker-input{
+.c-rangepicker-input{
+    text-align: center;
     padding-left: 32px !important;
 }
-.c-datepicker-shortcut{
+.c-rangepicker-shortcut{
     display: inline-block;
     vertical-align: top;
     padding-top: 6px;
 }
 
-.c-datepicker-shortcut-list{
+.c-rangepicker-shortcut-list{
     margin: 0;
 }
-.c-datepicker-shortcut-item{
+.c-rangepicker-shortcut-item{
     display: inline-block;
     margin-left: 10px;
     cursor: pointer;
 }
-.c-datepicker-shortcut-item:hover{
+.c-rangepicker-shortcut-item:hover{
     color: #f18f30;
 }
-.c-datepicker-shortcut-item-active{
+.c-rangepicker-shortcut-item-active{
     padding-bottom: 4px;
     color: #f18f30;
     border-bottom: 2px solid #f18f30;
 }
 
-.c-datepicker {
+.c-rangepicker {
     .daterangepicker{
         padding-bottom: 40px;
     }
@@ -97,4 +99,39 @@
     .daterangepicker .calendar.left .calendar-table{
         margin-right: 8px;
     }
+}
+
+.c-rangepicker-month{
+    position: absolute;
+    bottom: -313px;
+    right: 0;
+    padding: 10px 0;
+    min-width: 480px;
+    text-align: center;
+    background-color: #ffffff;
+    z-index: 10;
+    box-shadow: 2px 2px 10px #bdbdbd;
+}
+.c-rangepicker-month-start,
+.c-rangepicker-month-end{
+    display: inline-block;
+}
+.c-rangepicker-month-start{
+    margin-right: 10px;
+}
+.c-rangepicker-month .datepicker table{
+    margin: 0 auto;
+}
+.c-rangepicker-month h3{
+    margin: 0 0 8px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.c-rangepicker-month-start-calendar,
+.c-rangepicker-month-end-calendar{
+    border: 1px solid #cfcfcf;
+}
+.c-rangepicker-month-operation{
+    padding: 10px 10px 0;
+    text-align: right;
 }

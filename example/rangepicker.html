@@ -13,19 +13,36 @@
         body {
             height: 100%;
         }
+
+        #rangepicker-date{
+            float: left;
+        }
+        #rangepicker-month{
+            float: right;
+        }
     </style>
 </head>
 
 <body>
-    <div id="datepicker"></div>
+    <div class="">
+        <div id="rangepicker-date"></div>
+        <div id="rangepicker-month"></div>
+    </div>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
     <script type="text/javascript" src="./../dist/components.js"></script>
     <script>
         (function () {
-            new Components.Datepicker({
-                target: document.getElementById('datepicker'),
+            new Components.RangePicker({
+                target: document.getElementById('rangepicker-date'),
+                onChange: function (range) {
+                    console.log(range);
+                }
+            });
+            new Components.RangePicker({
+                target: document.getElementById('rangepicker-month'),
+                type: 'month',
                 onChange: function (range) {
                     console.log(range);
                 }

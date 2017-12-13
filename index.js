@@ -1,6 +1,6 @@
 require('./src/style.scss');
 require('bootstrap/dist/js/bootstrap.min');
-var Datepicker = require('./src/datepicker/main');
+var RangePicker = require('./src/rangepicker/main');
 var Uploader = require('./src/form/uploader/main');
 var Loading = require('./src/loading/main');
 var Modal = require('./src/modal/main');
@@ -14,7 +14,7 @@ var TableRemote = require('./src/table/remote/main');
 var Tag = require('./src/tag/main');
 
 module.exports = {
-    Datepicker: Datepicker,
+    RangePicker: RangePicker,
     Uploader: Uploader,
     Loading: Loading,
     Modal: Modal,

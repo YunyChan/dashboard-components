@@ -25,6 +25,7 @@
     "animate.css": "^3.5.2",
     "blueimp-file-upload": "^9.18.0",
     "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.7.1",
     "bootstrap-daterangepicker": "https://github.com/YunyChan/bootstrap-daterangepicker.git",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
