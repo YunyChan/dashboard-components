@@ -74,7 +74,7 @@ function Render() {
     }else{
         this.renderMonth();
     }
-    this.onChange();
+    this.onChange(true);
 };
 
 function OnShortcutClick(range) {
@@ -109,19 +109,19 @@ function OnShortcutClick(range) {
     this.onChange();
 }
 
-function OnChange() {
+function OnChange(force) {
     var start = null;
     var end = null;
     if(this.type == 'date'){
         start = this.$input.data('daterangepicker').startDate;
         end = this.$input.data('daterangepicker').endDate;
-        if (this.start.format('YYYY-MM-DD') == start.format('YYYY-MM-DD') && this.end.format('YYYY-MM-DD') == end.format('YYYY-MM-DD')) {
+        if (!force && this.start.format('YYYY-MM-DD') == start.format('YYYY-MM-DD') && this.end.format('YYYY-MM-DD') == end.format('YYYY-MM-DD')) {
             return
         }
     }else{
         start = moment($(this.doms.monthStartCalendar).datepicker('getDate'));
         end = moment($(this.doms.monthEndCalendar).datepicker('getDate'));
-        if (this.start.format('YYYY-MM') == start.format('YYYY-MM') && this.end.format('YYYY-MM') == end.format('YYYY-MM')) {
+        if (!force && this.start.format('YYYY-MM') == start.format('YYYY-MM') && this.end.format('YYYY-MM') == end.format('YYYY-MM')) {
             return
         }
     }
@@ -229,7 +229,6 @@ function RenderDate(){
         },
         startDate: moment().subtract(7, 'd'),
         endDate: moment().subtract(1, 'd')
-
     }
 
     // 原生组件参数
