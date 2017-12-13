@@ -23,11 +23,12 @@ function RangePicker(conf) {
 
 RangePicker.prototype = {
     doms: {
+        wrap: '.c-rangepicker-wrap',
         input: '.c-rangepicker-input',
         month: '.c-rangepicker-month',
+        monthWrap: '.c-rangepicker-month-wrap',
         monthStartCalendar: '.c-rangepicker-month-start-calendar',
         monthEndCalendar: '.c-rangepicker-month-end-calendar',
-
 
         shortcutList: '.c-rangepicker-shortcut-list'
     },
@@ -264,7 +265,8 @@ function RenderDate(){
 
 function RenderMonth(){
     var that = this;
-    var $month = this.$month = $(this.doms.month);
+    $(this.doms.wrap).addClass('c-rangepicker-month');
+    var $month = this.$month = $(this.doms.monthWrap);
     $month.datepicker({
         format: 'yyyy-mm',
         language: 'zh-CN',

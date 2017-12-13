@@ -5575,11 +5575,12 @@ function RangePicker(conf) {
 
 RangePicker.prototype = {
     doms: {
+        wrap: '.c-rangepicker-wrap',
         input: '.c-rangepicker-input',
         month: '.c-rangepicker-month',
+        monthWrap: '.c-rangepicker-month-wrap',
         monthStartCalendar: '.c-rangepicker-month-start-calendar',
         monthEndCalendar: '.c-rangepicker-month-end-calendar',
-
 
         shortcutList: '.c-rangepicker-shortcut-list'
     },
@@ -5816,7 +5817,8 @@ function RenderDate(){
 
 function RenderMonth(){
     var that = this;
-    var $month = this.$month = $(this.doms.month);
+    $(this.doms.wrap).addClass('c-rangepicker-month');
+    var $month = this.$month = $(this.doms.monthWrap);
     $month.datepicker({
         format: 'yyyy-mm',
         language: 'zh-CN',
@@ -12138,7 +12140,7 @@ module.exports = "<div class=\"c-pager\" id=\"pager\">\r\n    <div class=\"c-pag
 /* 38 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-rangepicker\">\r\n    <div class=\"c-rangepicker-wrap\">\r\n        <i class=\"glyphicon glyphicon-calendar\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-rangepicker-input\">\r\n        <div class=\"c-rangepicker-month\" style=\"display: none;\">\r\n            <div class=\"c-rangepicker-month-calendars\">\r\n                <div class=\"c-rangepicker-month-start\">\r\n                    <h3>起始时间</h3>\r\n                    <div class=\"c-rangepicker-month-start-calendar\"></div>\r\n                </div>\r\n                <div class=\"c-rangepicker-month-end\">\r\n                    <h3>终止时间</h3>\r\n                    <div class=\"c-rangepicker-month-end-calendar\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"c-rangepicker-month-operation\">\r\n                <a class=\"btn btn-sm btn-success c-rangepicker-month-ok\" href=\"javascript:;\">确定</a>\r\n                <a class=\"btn btn-sm btn-default c-rangepicker-month-cancel\" href=\"javascript:;\">取消</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-rangepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-rangepicker-shortcut-list\">\r\n            <!-- <li class=\"c-rangepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-rangepicker-shortcut-item c-rangepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"c-rangepicker\">\r\n    <div class=\"c-rangepicker-wrap\">\r\n        <i class=\"glyphicon glyphicon-calendar\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-rangepicker-input\">\r\n        <div class=\"c-rangepicker-month-wrap\" style=\"display: none;\">\r\n            <div class=\"c-rangepicker-month-calendars\">\r\n                <div class=\"c-rangepicker-month-start\">\r\n                    <h3>起始时间</h3>\r\n                    <div class=\"c-rangepicker-month-start-calendar\"></div>\r\n                </div>\r\n                <div class=\"c-rangepicker-month-end\">\r\n                    <h3>终止时间</h3>\r\n                    <div class=\"c-rangepicker-month-end-calendar\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"c-rangepicker-month-operation\">\r\n                <a class=\"btn btn-sm btn-success c-rangepicker-month-ok\" href=\"javascript:;\">确定</a>\r\n                <a class=\"btn btn-sm btn-default c-rangepicker-month-cancel\" href=\"javascript:;\">取消</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-rangepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-rangepicker-shortcut-list\">\r\n            <!-- <li class=\"c-rangepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-rangepicker-shortcut-item c-rangepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 39 */
