@@ -18,12 +18,13 @@ function RangePicker(conf) {
         this.start = moment();
         this.end = moment();
     }
-    this.render();
+    this.render(conf);
 }
 
 RangePicker.prototype = {
     doms: {
         wrap: '.c-rangepicker-wrap',
+        icon: '.c-rangepicker-icon',
         input: '.c-rangepicker-input',
         month: '.c-rangepicker-month',
         monthWrap: '.c-rangepicker-month-wrap',
@@ -62,13 +63,14 @@ RangePicker.prototype = {
 
 module.exports = RangePicker;
 
-function BeforeRender() {
+function BeforeRender(conf) {
     this.target.innerHTML = tpl;
 };
 
-function Render() {
+function Render(conf) {
     var that = this;
     MVC.View.render(this);
+    this.doms.icon.className += ' ' + (conf.icon || 'glyphicon glyphicon-calendar');
     if(this.type == 'date'){
         this.renderDate();
     }else{
