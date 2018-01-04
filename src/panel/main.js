@@ -103,6 +103,8 @@ function OnTabChange(targetIdx){
         }
     });
     
+    this.doms.tab.className = 'c-panel-tab ' + (targetIdx == 1 ? 'c-panel-tab-data' : 'c-panel-tab-chart');
+    
     var handler = this.conf['onChange'];
     handler && handler.call(this, targetIdx);
 }
