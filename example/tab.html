@@ -75,6 +75,19 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <h2>Tab with Key</h2>
+                <div class="c-tab" id="tabWithKey">
+                    <ul class="c-tab-hd f-clear"></ul>
+                    <div class="c-tab-bd">
+                        <div class="c-tab-panel">
+                            <p>Tab with Key</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/vue/2.4.4/vue.min.js"></script>
@@ -84,16 +97,43 @@
             var tab = new Components.Tab({
                 target: document.getElementById('tab'),
                 default: 0, // 从0开始
-                onChange: function (idx, panel, entry) {
-                    console.log(idx);
+                onChange: function (idx, key, doms) {
+                    console.log({
+                        index: idx,
+                        key: key,
+                        doms: doms
+                    });
                 }
             });
 
             var tabWithSinglePanel = new Components.Tab({
                 target: document.getElementById('tabWithSinglePanel'),
+                default: 1, // 从0开始
+                onChange: function (idx, key, doms) {
+                    console.log({
+                        index: idx,
+                        key: key,
+                        doms: doms
+                    });
+                }
+            });
+
+            var tabWithKey = new Components.Tab({
+                target: document.getElementById('tabWithKey'),
                 default: 0, // 从0开始
-                onChange: function (idx, panel, entry) {
-                    console.log(idx);
+                entries: [{
+                    title: 'tab0',
+                    key: 'tab0',
+                    tip: 'tip of tab0'
+                }, {
+                    title: 'tab1'
+                }],
+                onChange: function (idx, key, doms) {
+                    console.log({
+                        index: idx,
+                        key: key,
+                        doms: doms
+                    });
                 }
             });
         })()

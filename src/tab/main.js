@@ -6,6 +6,7 @@ function Tab(conf) {
     this.conf = conf;
     this.index = conf.default === undefined ? 0 : conf.default;
     this.singlePanel = true;
+    this.entries = conf.entries;
     this.render();
 }
 
@@ -20,6 +21,7 @@ Tab.prototype = {
         }
     },
     render: Render,
+    renderEntries: RenderEntries,
     onEntryClick: OnEntryClick,
     change: Change
 }
@@ -29,9 +31,15 @@ module.exports = Tab;
 function Render() {
     var that = this;
     MVC.View.render(this);
+    if(this.entries){
+        this.renderEntries();
+    }
 
     $(this.doms.header).find('.c-tab-entry').each(function (index, item) {
         $(item).attr('data-index', index);
+        if(that.entries && that.entries[index].key){
+            $(item).attr('data-key', that.entries[index].key);
+        }
     });
 
     var panelsCount = 0;
@@ -46,6 +54,26 @@ function Render() {
     this.change(this.index);
 }
 
+function RenderEntries(){
+    var html = '';
+    for(var cnt = 0, len = this.entries.length; cnt < len; cnt++){
+        var entry = this.entries[cnt];
+        var entryClass = 'c-tab-entry' + (entry.tip ? ' c-tip-anchor': '');
+        var entryTip = entry.tip ? [
+            '<div class="c-tip">',
+                '<div class="c-tip-wrap">' + entry.tip + '</div>',
+            '</div>'
+        ].join('') : '';
+        html += [
+            '<li class="' + entryClass + '">',
+                '<span class="c-tab-entry-txt">' + entry.title + '</span>',
+                entryTip,
+            '</li>'
+        ].join('');
+    }
+    this.doms.header.innerHTML = html;
+}
+
 function OnEntryClick(index) {
     if (this.index == index) {
         return;
@@ -57,11 +85,13 @@ function OnEntryClick(index) {
 function Change(index) {
     var self = this;
     var currentIndex = index === undefined ? this.index : index;
+    var currentKey = null;
     var activeEntry = null;
     var activePanel = null;
     $(this.doms.header).find('.c-tab-entry').each(function (index, item) {
         if (index == currentIndex) {
             activeEntry = item;
+            currentKey = item.getAttribute('data-key');
             $(item).addClass('c-tab-entry-active');
         } else {
             $(item).removeClass('c-tab-entry-active');
@@ -81,5 +111,8 @@ function Change(index) {
         }
     });
     var handler = this.conf['onChange'];
-    handler && handler.call(this, index, activePanel, activeEntry);
+    handler && handler.call(this, index, currentKey, {
+        entry: activeEntry,
+        panel: activePanel
+    });
 }
