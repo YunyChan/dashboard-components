@@ -120,13 +120,26 @@
             var tabWithKey = new Components.Tab({
                 target: document.getElementById('tabWithKey'),
                 default: 0, // 从0开始
-                entries: [{
-                    title: 'tab0',
-                    key: 'tab0',
-                    tip: 'tip of tab0'
-                }, {
-                    title: 'tab1'
-                }],
+                titles: {
+                    'DayPayerNum': '日付费数',
+                    'DayPayment': '日流水',
+                    'PayRadio': '日付费率',
+                    'PayARPU': '付费ARPU',
+                    'ActivityARPU': '活跃ARPU'
+                },
+                entries: [
+                    'DayPayerNum',
+                    'DayPayment',
+                    'PayRadio',
+                    {
+                        title: 'tab0',
+                        key: 'tab0',
+                        tip: 'tip of tab0'
+                    }, 
+                    {
+                        key: 'ActivityARPU'
+                    }
+                ],
                 onChange: function (idx, key, doms) {
                     console.log({
                         index: idx,

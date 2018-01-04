@@ -6,7 +6,8 @@ function Tab(conf) {
     this.conf = conf;
     this.index = conf.default === undefined ? 0 : conf.default;
     this.singlePanel = true;
-    this.entries = conf.entries;
+    this.titles = conf.titles;
+    this.entries = conf.entries ? this.formatEntries(conf.entries) : null;
     this.render();
 }
 
@@ -22,6 +23,7 @@ Tab.prototype = {
         }
     },
     render: Render,
+    formatEntries: FormatEntries,
     renderEntries: RenderEntries,
     onEntryClick: OnEntryClick,
     change: Change
@@ -33,7 +35,7 @@ function Render() {
     var that = this;
     MVC.View.render(this);
     if(this.entries){
-        this.renderEntries();
+        this.renderEntries(this.entries);
     }
 
     $(this.doms.header).find('.c-tab-entry').each(function (index, item) {
@@ -55,15 +57,41 @@ function Render() {
     this.change(this.index);
 }
 
-function RenderEntries(){
+function FormatEntries(data){
+    var entries = [];
+    var activeIdx = -1;
+    for(var cnt = 0, len = data.length; cnt < len; cnt++){
+        var o = data[cnt];
+        if(typeof o == 'string'){
+            o = {
+                key: o
+            };
+        }
+        o.title = o.title || (this.titles && this.titles[o.key]) || '';
+        if(o.active){
+            activeIdx = cnt;
+            o.active = true;
+        }else{
+            o.active = false;
+        }
+        entries.push(o);
+    }
+    if(entries.length > 0 && activeIdx == -1){
+        entries[0].active = true;
+        this.index = 0;
+    }
+    return entries;
+}
+
+function RenderEntries(entries){
     var header = document.createElement('div');
     header.className = 'c-tab-hd';
 
     var entryList = document.createElement('ul');
     entryList.className = 'c-tab-entries f-clear';
     var html = '';
-    for(var cnt = 0, len = this.entries.length; cnt < len; cnt++){
-        var entry = this.entries[cnt];
+    for(var cnt = 0, len = entries.length; cnt < len; cnt++){
+        var entry = entries[cnt];
         var entryClass = 'c-tab-entry' + (entry.tip ? ' c-tip-anchor': '');
         var entryTip = entry.tip ? [
             '<div class="c-tip">',
@@ -78,7 +106,7 @@ function RenderEntries(){
         ].join('');
     }
     entryList.innerHTML = html;
-    
+
     this.doms.header = header;
     this.doms.entries = entryList;
     header.appendChild(entryList);
