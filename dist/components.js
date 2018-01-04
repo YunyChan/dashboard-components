@@ -12214,7 +12214,7 @@ module.exports = "<div class=\"c-pager\" id=\"pager\">\r\n    <div class=\"c-pag
 /* 38 */
 /***/ (function(module, exports) {
 
-module.exports = "<span class=\"c-panel-tab\">\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-chart\"></a>\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-data\"></a>\r\n</span>";
+module.exports = "<span class=\"c-panel-tab f-clear\">\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-chart\"></a>\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-data\"></a>\r\n</span>";
 
 /***/ }),
 /* 39 */
