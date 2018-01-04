@@ -1,29 +1,27 @@
 .c-panel{
-    position: relative;
-    box-shadow: 2px 2px 10px #bdbdbd;
-    background-color: #ffffff;
     margin-bottom: 20px;
-}
-.c-panel-hd{
-    height: 45px;
-    margin: 0;
-    padding-left: 16px;
-    color: #333333;
-    line-height: 40px;
-    background: #f4f4f4;
 }
 .c-panel-title{
     display: block;
-    line-height: 45px;
+    margin: 0;
+    line-height: 40px;
     font-size: 16px;
     font-weight: bold;
 }
-.c-panel-tab{
+.c-panel-wrap{
+    position: relative;
+    box-shadow: 2px 2px 10px #bdbdbd;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.c-panel-hd{
     position: absolute;
     top: 0;
-    right: 16px;
-    height: 45px;
-    line-height: 45px;
+    margin: 0;
+    color: #333333;
+}
+
+.c-panel-tab{
 }
 .c-panel-tab-entry{
     margin-left: 8px;
@@ -35,9 +33,30 @@
 a.c-panel-tab-entry{
     text-decoration: none;
 }
-.c-panel-tab-entry i{
-    margin-right: 4px;
+.c-panel-tab-entry-chart{
+
 }
+.c-panel-tab-entry-chart:after{
+    display: inline-block;
+    content: '图表';
+}
+.c-panel-tab-entry-data{
+
+}
+.c-panel-tab-entry-data:after{
+    display: inline-block;
+    content: '数据';
+}
+
+.c-panel-export{
+
+}
+.c-panel-export:before{
+    content: '下载';
+    display: inline-block;
+}
+
+
 .c-panel-bd{
     padding: 20px;
 }
