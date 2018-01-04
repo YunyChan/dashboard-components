@@ -46,7 +46,7 @@ function Render(){
 
 function RenderHeader(){
     var header = document.createElement('div');
-    header.className = 'c-panel-hd';
+    header.className = 'c-panel-hd f-clear';
     this.doms.header = header;
     this.doms.wrap.insertBefore(header, this.doms.body);
     if(this.tabs){
