@@ -13,6 +13,7 @@ function Tab(conf) {
 Tab.prototype = {
     doms: {
         header: '.c-tab-hd',
+        entries: '.c-tab-entries',
         body: '.c-tab-bd'
     },
     events: {
@@ -55,6 +56,11 @@ function Render() {
 }
 
 function RenderEntries(){
+    var header = document.createElement('div');
+    header.className = 'c-tab-hd';
+
+    var entryList = document.createElement('ul');
+    entryList.className = 'c-tab-entries f-clear';
     var html = '';
     for(var cnt = 0, len = this.entries.length; cnt < len; cnt++){
         var entry = this.entries[cnt];
@@ -71,7 +77,12 @@ function RenderEntries(){
             '</li>'
         ].join('');
     }
-    this.doms.header.innerHTML = html;
+    entryList.innerHTML = html;
+    
+    this.doms.header = header;
+    this.doms.entries = entryList;
+    header.appendChild(entryList);
+    this.dom.insertBefore(header, this.doms.body);
 }
 
 function OnEntryClick(index) {
