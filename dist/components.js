@@ -5945,6 +5945,7 @@ var MVC = __webpack_require__(1);
 function Tab(conf) {
     this.conf = conf;
     this.index = conf.default === undefined ? 0 : conf.default;
+    this.singlePanel = true;
     this.render();
 }
 
@@ -5966,15 +5967,20 @@ Tab.prototype = {
 module.exports = Tab;
 
 function Render() {
-    var self = this;
-
+    var that = this;
     MVC.View.render(this);
 
     $(this.doms.header).find('.c-tab-entry').each(function (index, item) {
         $(item).attr('data-index', index);
     });
+
+    var panelsCount = 0;
     $(this.doms.body).find('.c-tab-panel').each(function (index, item) {
         $(item).attr('data-index', index);
+        panelsCount ++;
+        if(panelsCount > 1){
+            that.singlePanel = false;
+        }
     });
 
     this.change(this.index);
@@ -5991,25 +5997,23 @@ function OnEntryClick(index) {
 function Change(index) {
     var self = this;
     var currentIndex = index === undefined ? this.index : index;
-    var entry = null;
-    var panel = null;
+    var activeEntry = null;
+    var activePanel = null;
     $(this.doms.header).find('.c-tab-entry').each(function (index, item) {
         if (index == currentIndex) {
-            entry = item;
+            activeEntry = item;
             $(item).addClass('c-tab-entry-active');
         } else {
             $(item).removeClass('c-tab-entry-active');
         }
     });
-    if(this.conf.single){
-
-    }
     $(this.doms.body).find('.c-tab-panel').each(function (index, item) {
-        if(self.conf.single){
+        if(self.singlePanel){
+            activePanel = item;
             $(item).addClass('c-tab-panel-active');
         }else{
             if (index == currentIndex) {
-                panel = item;
+                activePanel = item;
                 $(item).addClass('c-tab-panel-active');
             } else {
                 $(item).removeClass('c-tab-panel-active');
@@ -6017,7 +6021,7 @@ function Change(index) {
         }
     });
     var handler = this.conf['onChange'];
-    handler && handler.call(this, index, panel, entry);
+    handler && handler.call(this, index, activePanel, activeEntry);
 }
 
 /***/ }),
