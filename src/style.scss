@@ -1,6 +1,19 @@
 @import "./table/style.scss";
 @import "./panel/style.scss";
 
+.f-clear{
+}
+.f-clear:before,
+.f-clear:after{
+    clear:both;
+    content:".";
+    font-size:0;
+    display:block;
+    height:0;
+    overflow:hidden;
+    visibility:hidden
+}
+
 .c-mask{
     position: fixed;
     top: 0;

@@ -1,43 +1,35 @@
 .c-tab{
     position: relative;
-    box-shadow: 2px 2px 10px #bdbdbd;
+    // box-shadow: 2px 2px 10px #bdbdbd;
 }
 .c-tab-hd{
-    height: 45px;
     margin: 0;
     padding: 0;
-    color: #333333;
     list-style: none;
-    background-color: #f4f4f4;
 }
 .c-tab-entry{
+    display: block;
     float: left;
     position: relative;
-    line-height: 45px;
+    padding: 0 20px;
+    font-size: 14px;
+    cursor: pointer;
 }
 .c-tab-entry-txt{
-    margin: 0 8px;
-    padding: 0 8px;
+    display: inline-block;
+    height: 26px;
+    color: #c6c6c6;
+    line-height: 26px;
 }
 .c-tab-entry:hover .c-tab-entry-txt{
-    color: #f18f30;
+    color: #ff7816;
 }
 .c-tab-entry-active .c-tab-entry-txt{
-    display: inline-block;
-    height: 45px;
-    color: #f18f30;
-    border-bottom: 2px solid #f18f30;
+    color: #ff7816;
+    border-bottom: 2px solid #ff7816;
 }
-.c-tab-entry:after{
-    content: '|';
-    color: #eae8e8;
-}
-.c-tab-entry:last-child:after{
-    display: none;
-}
-
 .c-tab-entry .c-tip{
-    top: 45px;
+    top: 26px;
 }
 
 .c-tab-bd,
