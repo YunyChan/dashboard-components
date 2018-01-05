@@ -12,11 +12,11 @@ function RangePicker(conf) {
     this.target = conf.target;
     this.type = conf.type || 'date';
     if(this.type == 'date'){
-        this.start = moment().subtract(7, 'd');
-        this.end = moment().subtract(1, 'd');
+        this.start = conf.start || moment().subtract(7, 'd');
+        this.end = conf.end || moment().subtract(1, 'd');
     }else{
-        this.start = moment();
-        this.end = moment();
+        this.start = conf.start || moment();
+        this.end = conf.end || moment();
     }
     this.render(conf);
 }
@@ -229,8 +229,8 @@ function RenderDate(){
             ],
             'firstDay': 1
         },
-        startDate: moment().subtract(7, 'd'),
-        endDate: moment().subtract(1, 'd')
+        startDate: this.start.clone(),
+        endDate: this.end.clone()
     }
 
     // 原生组件参数
@@ -276,8 +276,8 @@ function RenderMonth(){
         inputs: [this.doms.monthStartCalendar, this.doms.monthEndCalendar]
     });
 
-    $(this.doms.monthStartCalendar).datepicker('update', moment().format('YYYY-MM'));
-    $(this.doms.monthEndCalendar).datepicker('update', moment().format('YYYY-MM'));
+    $(this.doms.monthStartCalendar).datepicker('update', this.start.clone().format('YYYY-MM'));
+    $(this.doms.monthEndCalendar).datepicker('update', this.end.clone().format('YYYY-MM'));
 
     $(this.doms.input).on('click', function(){
         $month.addClass('animated fadeInDown');
