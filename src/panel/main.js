@@ -24,7 +24,7 @@ Panel.prototype = {
             this.onTabChange(idx);
         },
         '.c-panel-export': function(dom, evt){
-            var handler = this.conf['onChange'];
+            var handler = this.conf['onExport'];
             handler && handler.call(this);
         }
     },
