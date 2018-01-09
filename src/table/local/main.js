@@ -23,7 +23,8 @@ TableLocal.prototype = {
     },
     render: Render,
     update: Update,
-    onPageChange: OnPageChange
+    onPageChange: OnPageChange,
+    showCol: ShowCol
 }
 
 module.exports = TableLocal;
@@ -72,4 +73,8 @@ function OnPageChange(pageNo){
         end = this.list.length;
     }
     this.table.update(this.list.slice(start, end)); // 左闭右开
+}
+
+function ShowCol(){
+    this.table.showCol.apply(this.table, arguments);
 }

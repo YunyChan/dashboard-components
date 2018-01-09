@@ -338,7 +338,8 @@ Table.prototype = {
     },
     render: Render,
     renderHeader: RenderHeader,
-    update: Update
+    update: Update,
+    showCol: ShowCol
 }
 
 module.exports = Table;
@@ -396,10 +397,12 @@ function RenderHeader(){
         if(typeof o == 'string'){
             headers.push({
                 key: o,
-                title: (this.titles && this.titles[o]) || o
+                title: (this.titles && this.titles[o]) || o,
+                show: true
             });
         }else{
             o['title'] = o['title'] || (this.titles && this.titles[o['key']]) || o['key'];
+            o['show'] = o['show'] === undefined ? true : o['show'] ;
             headers.push(o);
         }
     }
@@ -408,6 +411,27 @@ function RenderHeader(){
 
 function Update(list){
     this.table.list = list;
+}
+
+function ShowCol(col, isShow){
+    var idx = 0;
+    if(typeof col == 'string'){
+        if(/\d+/.test(col)){
+            idx = col;
+        }else{
+            for(var cnt = 0, len = this.table.headers.length; cnt < len; cnt++){
+                var h = this.table.headers[cnt];
+                if(h.key == col){
+                    idx = cnt;
+                    break;
+                }
+            }
+        }
+    }else{
+        idx = col;
+    }
+
+    this.table.headers[idx].show = isShow;
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -6163,7 +6187,8 @@ TableLocal.prototype = {
     },
     render: Render,
     update: Update,
-    onPageChange: OnPageChange
+    onPageChange: OnPageChange,
+    showCol: ShowCol
 }
 
 module.exports = TableLocal;
@@ -6214,6 +6239,10 @@ function OnPageChange(pageNo){
     this.table.update(this.list.slice(start, end)); // 左闭右开
 }
 
+function ShowCol(){
+    this.table.showCol.apply(this.table, arguments);
+}
+
 /***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -6241,7 +6270,8 @@ TableRemote.prototype = {
     },
     render: Render,
     update: Update,
-    onPageChange: OnPageChange
+    onPageChange: OnPageChange,
+    showCol: ShowCol
 }
 
 module.exports = TableRemote;
@@ -6282,6 +6312,10 @@ function Update(data){
 function OnPageChange(pageNo){
     var handler = this.conf.onChange;
     handler && handler.call(this, pageNo);
+}
+
+function ShowCol(){
+    this.table.showCol.apply(this.table, arguments);
 }
 
 /***/ }),
@@ -12285,7 +12319,7 @@ module.exports = "<div class=\"c-table-remote\">\r\n    <div class=\"c-table-rem
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table\" v-bind:class=\"{ 'c-table-full': full }\">\r\n    <table class=\"c-table-table\">\r\n        <thead>\r\n            <tr>\r\n                <th v-for=\"item in headers\" v-bind:class=\"item.classMap\" v-bind:style=\"item.styleMap\" v-on:click=\"headerClick(item)\">{{ item.title }}</th>\r\n                <th v-if=\"enableDetail || enableRemove || enableEdit\">操作</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody v-if=\"list.length > 0\">\r\n            <tr v-for=\"item in list\">\r\n                <td v-for=\"hd in headers\" v-bind:class=\"hd.classMap\" v-bind:style=\"hd.styleMap\">{{ item[hd.key] || '--' }}{{ hd.unit }}</td>\r\n                <td v-if=\"enableDetail || enableRemove || enableEdit\">\r\n                    <button class=\"btn btn-primary\" v-on:click=\"detailClick(item)\" v-if=\"enableDetail\">详情</button>\r\n                    <button class=\"btn btn-danger\" v-on:click=\"removeClick(item)\" v-if=\"enableRemove\">删除</button>\r\n                    <button class=\"btn btn-default\" v-on:click=\"editClick(item)\" v-if=\"enableEdit\">编辑</button>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n        <tbody v-if=\"list.length == 0\">\r\n            <tr>\r\n                <td class=\"c-table-empty\" v-bind:colspan=\"headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)\"><i class=\"glyphicon glyphicon-info-sign\"></i><span>暂无数据</span></td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>";
+module.exports = "<div class=\"c-table\" v-bind:class=\"{ 'c-table-full': full }\">\r\n    <table class=\"c-table-table\">\r\n        <thead>\r\n            <tr>\r\n                <th v-for=\"item in headers\" v-show=\"item.show\" v-bind:class=\"item.classMap\" v-bind:style=\"item.styleMap\" v-on:click=\"headerClick(item)\">{{ item.title }}</th>\r\n                <th v-if=\"enableDetail || enableRemove || enableEdit\">操作</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody v-if=\"list.length > 0\">\r\n            <tr v-for=\"item in list\">\r\n                <td v-for=\"hd in headers\" v-show=\"hd.show\" v-bind:class=\"hd.classMap\" v-bind:style=\"hd.styleMap\">{{ item[hd.key] || '--' }}{{ hd.unit }}</td>\r\n                <td v-if=\"enableDetail || enableRemove || enableEdit\">\r\n                    <button class=\"btn btn-primary\" v-on:click=\"detailClick(item)\" v-if=\"enableDetail\">详情</button>\r\n                    <button class=\"btn btn-danger\" v-on:click=\"removeClick(item)\" v-if=\"enableRemove\">删除</button>\r\n                    <button class=\"btn btn-default\" v-on:click=\"editClick(item)\" v-if=\"enableEdit\">编辑</button>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n        <tbody v-if=\"list.length == 0\">\r\n            <tr>\r\n                <td class=\"c-table-empty\" v-bind:colspan=\"headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)\"><i class=\"glyphicon glyphicon-info-sign\"></i><span>暂无数据</span></td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>";
 
 /***/ }),
 /* 44 */

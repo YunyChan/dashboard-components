@@ -21,7 +21,8 @@ TableRemote.prototype = {
     },
     render: Render,
     update: Update,
-    onPageChange: OnPageChange
+    onPageChange: OnPageChange,
+    showCol: ShowCol
 }
 
 module.exports = TableRemote;
@@ -62,4 +63,8 @@ function Update(data){
 function OnPageChange(pageNo){
     var handler = this.conf.onChange;
     handler && handler.call(this, pageNo);
+}
+
+function ShowCol(){
+    this.table.showCol.apply(this.table, arguments);
 }

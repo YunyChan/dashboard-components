@@ -2,13 +2,13 @@
     <table class="c-table-table">
         <thead>
             <tr>
-                <th v-for="item in headers" v-bind:class="item.classMap" v-bind:style="item.styleMap" v-on:click="headerClick(item)">{{ item.title }}</th>
+                <th v-for="item in headers" v-show="item.show" v-bind:class="item.classMap" v-bind:style="item.styleMap" v-on:click="headerClick(item)">{{ item.title }}</th>
                 <th v-if="enableDetail || enableRemove || enableEdit">操作</th>
             </tr>
         </thead>
         <tbody v-if="list.length > 0">
             <tr v-for="item in list">
-                <td v-for="hd in headers" v-bind:class="hd.classMap" v-bind:style="hd.styleMap">{{ item[hd.key] || '--' }}{{ hd.unit }}</td>
+                <td v-for="hd in headers" v-show="hd.show" v-bind:class="hd.classMap" v-bind:style="hd.styleMap">{{ item[hd.key] || '--' }}{{ hd.unit }}</td>
                 <td v-if="enableDetail || enableRemove || enableEdit">
                     <button class="btn btn-primary" v-on:click="detailClick(item)" v-if="enableDetail">详情</button>
                     <button class="btn btn-danger" v-on:click="removeClick(item)" v-if="enableRemove">删除</button>

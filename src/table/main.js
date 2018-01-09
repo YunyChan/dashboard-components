@@ -23,7 +23,8 @@ Table.prototype = {
     },
     render: Render,
     renderHeader: RenderHeader,
-    update: Update
+    update: Update,
+    showCol: ShowCol
 }
 
 module.exports = Table;
@@ -81,10 +82,12 @@ function RenderHeader(){
         if(typeof o == 'string'){
             headers.push({
                 key: o,
-                title: (this.titles && this.titles[o]) || o
+                title: (this.titles && this.titles[o]) || o,
+                show: true
             });
         }else{
             o['title'] = o['title'] || (this.titles && this.titles[o['key']]) || o['key'];
+            o['show'] = o['show'] === undefined ? true : o['show'] ;
             headers.push(o);
         }
     }
@@ -93,4 +96,25 @@ function RenderHeader(){
 
 function Update(list){
     this.table.list = list;
+}
+
+function ShowCol(col, isShow){
+    var idx = 0;
+    if(typeof col == 'string'){
+        if(/\d+/.test(col)){
+            idx = col;
+        }else{
+            for(var cnt = 0, len = this.table.headers.length; cnt < len; cnt++){
+                var h = this.table.headers[cnt];
+                if(h.key == col){
+                    idx = cnt;
+                    break;
+                }
+            }
+        }
+    }else{
+        idx = col;
+    }
+
+    this.table.headers[idx].show = isShow;
 }
