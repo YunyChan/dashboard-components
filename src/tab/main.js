@@ -67,7 +67,7 @@ function FormatEntries(data){
                 key: o
             };
         }
-        o.title = o.title || (this.titles && this.titles[o.key]) || '';
+        o.title = o.title || (this.titles && this.titles[o.key]) || o.key;
         if(o.active){
             activeIdx = cnt;
             o.active = true;
