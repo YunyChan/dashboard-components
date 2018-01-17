@@ -12,6 +12,7 @@ var Table = require('./src/table/main');
 var TableLocal = require('./src/table/local/main');
 var TableRemote = require('./src/table/remote/main');
 var Tag = require('./src/tag/main');
+var Switch = require('./src/switch/main');
 
 module.exports = {
     RangePicker: RangePicker,
@@ -25,5 +26,6 @@ module.exports = {
     Table: Table,
     TableLocal: TableLocal,
     TableRemote: TableRemote,
-    Tag: Tag
+    Tag: Tag,
+    Switch: Switch
 }
