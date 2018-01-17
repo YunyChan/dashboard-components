@@ -5043,11 +5043,8 @@ Tag.prototype = {
         btnOff: '.c-switch-btn-off'
     },
     events: {
-        '.c-switch-btn-on': function(){
-            this.change(true);
-        },
-        '.c-switch-btn-off': function(){
-            this.change(false);
+        '.c-switch': function(){
+            this.change(!this.state);
         }
     },
     beforeRender: BeforeRender,
