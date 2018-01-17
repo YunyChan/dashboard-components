@@ -64,7 +64,7 @@ var Components =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 20);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,9 +77,9 @@ module.exports = jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Model = __webpack_require__(47);
-var View = __webpack_require__(8);
-var Module = __webpack_require__(48);
+var Model = __webpack_require__(50);
+var View = __webpack_require__(9);
+var Module = __webpack_require__(51);
 
 module.exports = {
     Model: Model,
@@ -97,8 +97,8 @@ module.exports = Vue;
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(29);
-var tpl = __webpack_require__(37);
+__webpack_require__(30);
+var tpl = __webpack_require__(39);
 var Vue = __webpack_require__(2);
 
 function Pager(conf) {
@@ -314,7 +314,7 @@ function IsShowRightEllipsis() {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Vue) {var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(43);
+var tpl = __webpack_require__(46);
 
 var AutoFullMaxKeyLength = 6;
 
@@ -2283,7 +2283,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             var aliasedRequire = require;
-            __webpack_require__(45)("./" + name);
+            __webpack_require__(48)("./" + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {}
     }
@@ -4955,14 +4955,14 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52)(module)))
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(27);
-var tpl = __webpack_require__(35);
+__webpack_require__(28);
+var tpl = __webpack_require__(37);
 
 var LoadingCounter = 0;
 var Wrap = null;
@@ -5022,6 +5022,78 @@ function Hide() {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(33);
+var MVC = __webpack_require__(1);
+var tpl = __webpack_require__(43);
+
+function Tag(conf) {
+    this.target = conf.target;
+    this.conf = conf;
+    this.state = null;
+    this.render();
+    this.change(conf.state === undefined ? false : conf.state);
+};
+
+Tag.prototype = {
+    doms: {
+        main: '.c-switch',
+        btnOn: '.c-switch-btn-on',
+        btnOff: '.c-switch-btn-off'
+    },
+    events: {
+        '.c-switch-btn-on': function(){
+            this.change(true);
+        },
+        '.c-switch-btn-off': function(){
+            this.change(false);
+        }
+    },
+    beforeRender: BeforeRender,
+    render: Render,
+    renderBtn: RenderBtn,
+    change: Change
+}
+
+module.exports = Tag;
+
+function BeforeRender() {
+    this.target.innerHTML = tpl;
+}
+
+function Render(){
+    var self = this;
+    MVC.View.render(this);
+    this.renderBtn();
+}
+
+function RenderBtn(){
+    this.doms.btnOn.innerText = this.conf.onText || '开';
+    this.doms.btnOff.innerText = this.conf.offText || '关';
+}
+
+function Change(state){
+    if(this.state === state){
+        return;
+    }
+    this.state = state;
+    if(state){
+        this.doms.main.className = 'c-switch c-switch-on';
+        this.doms.btnOn.className = 'c-switch-btn c-switch-btn-active c-switch-btn-on';
+        this.doms.btnOff.className = 'c-switch-btn c-switch-btn-off';
+    }else{
+        this.doms.main.className = 'c-switch c-switch-off';
+        this.doms.btnOn.className = 'c-switch-btn c-switch-btn-on';
+        this.doms.btnOff.className = 'c-switch-btn c-switch-btn-active c-switch-btn-off';
+    }
+    var handler = this.conf['onChange'];
+    handler && handler.call(this, this.state);
+}
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -5137,7 +5209,7 @@ return zhCn;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $ = __webpack_require__(0);
@@ -5215,7 +5287,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {/*!
@@ -5228,20 +5300,20 @@ this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+th
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(26);
+__webpack_require__(27);
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(34);
-__webpack_require__(21);
+var tpl = __webpack_require__(36);
+__webpack_require__(22);
 var Loading = __webpack_require__(6);
 
 function Uploader(conf) {
@@ -5368,12 +5440,12 @@ function SetData(data){
 }
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(28);
+__webpack_require__(29);
 var $ = __webpack_require__(0);
-var tpl = __webpack_require__(36);
+var tpl = __webpack_require__(38);
 var MVC = __webpack_require__(1);
 
 function Modal(conf) {
@@ -5494,18 +5566,18 @@ function SetTitle(title) {
 }
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
-var tabsHTML = __webpack_require__(38);
+var tabsHTML = __webpack_require__(40);
+var Switch = __webpack_require__(7);
 
 function Panel(conf) {
     this.target = conf.target;
-    this.tabs = conf.tabs === undefined ? true : conf.tabs;
+    this.switch = conf.switch === undefined ? true : conf.switch;
     this.conf = conf;
-    this.current = -1;
     this.render();
 };
 
@@ -5513,15 +5585,11 @@ Panel.prototype = {
     doms: {
         wrap: '.c-panel-wrap',
         header: null,
-        tab: null,
+        switch: null,
         export: null,
         body: '.c-panel-bd'
     },
     events: {
-        '.c-panel-tab-entry': function(dom, evt){
-            var idx = dom.getAttribute('data-idx') - 0;
-            this.onTabChange(idx);
-        },
         '.c-panel-export': function(dom, evt){
             var handler = this.conf['onExport'];
             handler && handler.call(this);
@@ -5529,9 +5597,9 @@ Panel.prototype = {
     },
     render: Render,
     renderHeader: RenderHeader,
-    renderTab: RenderTab,
+    renderSwitch: RenderSwitch,
     renderExport: RenderExport,
-    onTabChange: OnTabChange
+    onSwitchChange: OnSwitchChange,
 }
 
 module.exports = Panel;
@@ -5548,31 +5616,26 @@ function RenderHeader(){
     header.className = 'c-panel-hd f-clear';
     this.doms.header = header;
     this.doms.wrap.insertBefore(header, this.doms.body);
-    if(this.tabs){
-        this.renderTab();
+    if(this.switch){
+        this.renderSwitch();
     }
     if(this.conf['onExport']){
         this.renderExport();
     }
 }
 
-function RenderTab(){
-    this.doms.header.innerHTML = tabsHTML;
-    this.doms.tab = this.doms.header.querySelector('.c-panel-tab');
-    var $entries = $(this.doms.tab).find('.c-panel-tab-entry');
-    if($entries.length > 0){
-        var hasActiveTab = false;
-        $entries.each(function(idx, itm){
-            $(this).attr('data-idx', idx);
-            if($(this).hasClass('active')){
-                hasActiveTab = true;
-                this.current = idx;
-            }
-        });
-        if(!hasActiveTab){
-            this.onTabChange(0);
+function RenderSwitch(){
+    var that = this;
+    var panelSwitch = this.doms.switch = document.createElement('span');
+    panelSwitch.className = 'c-panel-switch';
+    var switchCOMP = new Switch({
+        target: panelSwitch,
+        state: true,
+        onChange: function(state){
+            that.onSwitchChange(state);
         }
-    }
+    });
+    this.doms.header.appendChild(panelSwitch);
 }
 
 function RenderExport(){
@@ -5582,43 +5645,31 @@ function RenderExport(){
     this.doms.header.appendChild(btnExport);
 }
 
-function OnTabChange(targetIdx){
-    if(this.current == targetIdx){
-        return;
-    }
-    this.current = targetIdx;
-    $(this.doms.tab).find('.c-panel-tab-entry').each(function(){
-        if((this.getAttribute('data-idx') - 0) == targetIdx){
-            $(this).addClass('active');
-        }else{
-            $(this).removeClass('active');
-        }
-    });
+function OnSwitchChange(state){
+    var targetIDX = state === false ? 1 : 0;
     $(this.doms.body).find('.c-panel-tab-panel').each(function(idx){
-        if(idx == targetIdx){
+        if(idx == targetIDX){
             $(this).show();
         }else{
             $(this).hide();
         }
     });
     
-    this.doms.tab.className = 'c-panel-tab ' + (targetIdx == 1 ? 'c-panel-tab-data' : 'c-panel-tab-chart');
-    
     var handler = this.conf['onChange'];
-    handler && handler.call(this, targetIdx);
+    handler && handler.call(this, targetIDX);
 }
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(30);
-__webpack_require__(25);
-__webpack_require__(23);
+__webpack_require__(31);
+__webpack_require__(26);
 __webpack_require__(24);
+__webpack_require__(25);
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(39);
+var tpl = __webpack_require__(41);
 var moment = __webpack_require__(5);
 
 function RangePicker(conf) {
@@ -5918,13 +5969,13 @@ function HideMonth(){
 }
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(31);
-var Odometer = __webpack_require__(46);
+__webpack_require__(32);
+var Odometer = __webpack_require__(49);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(40);
+var tpl = __webpack_require__(42);
 var Vue = __webpack_require__(2);
 var $ = __webpack_require__(0);
 
@@ -5997,10 +6048,10 @@ function Format(data){
 }
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(32);
+__webpack_require__(34);
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
 
@@ -6159,11 +6210,11 @@ function Change(index) {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(41);
+var tpl = __webpack_require__(44);
 var Pager = __webpack_require__(3);
 var Table = __webpack_require__(4);
 
@@ -6244,11 +6295,11 @@ function ShowCol(){
 }
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(42);
+var tpl = __webpack_require__(45);
 var Pager = __webpack_require__(3);
 var Table = __webpack_require__(4);
 
@@ -6319,13 +6370,13 @@ function ShowCol(){
 }
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(33);
+__webpack_require__(35);
 var Vue = __webpack_require__(2);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(44);
+var tpl = __webpack_require__(47);
 
 function Tag(conf) {
     this.target = conf.target;
@@ -6416,23 +6467,24 @@ function SetData(data){
 }
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(11);
 __webpack_require__(10);
-__webpack_require__(9);
-var RangePicker = __webpack_require__(14);
-var Uploader = __webpack_require__(11);
+var RangePicker = __webpack_require__(15);
+var Uploader = __webpack_require__(12);
 var Loading = __webpack_require__(6);
-var Modal = __webpack_require__(12);
+var Modal = __webpack_require__(13);
 var Pager = __webpack_require__(3);
-var Panel = __webpack_require__(13);
-var Summary = __webpack_require__(15);
-var Tab = __webpack_require__(16);
+var Panel = __webpack_require__(14);
+var Summary = __webpack_require__(16);
+var Tab = __webpack_require__(17);
 var Table = __webpack_require__(4);
-var TableLocal = __webpack_require__(17);
-var TableRemote = __webpack_require__(18);
-var Tag = __webpack_require__(19);
+var TableLocal = __webpack_require__(18);
+var TableRemote = __webpack_require__(19);
+var Tag = __webpack_require__(20);
+var Switch = __webpack_require__(7);
 
 module.exports = {
     RangePicker: RangePicker,
@@ -6446,11 +6498,12 @@ module.exports = {
     Table: Table,
     TableLocal: TableLocal,
     TableRemote: TableRemote,
-    Tag: Tag
+    Tag: Tag,
+    Switch: Switch
 }
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -6473,7 +6526,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         // Register as an anonymous AMD module:
         !(__WEBPACK_AMD_DEFINE_ARRAY__ = [
             __webpack_require__(0),
-            __webpack_require__(22)
+            __webpack_require__(23)
         ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
@@ -7941,7 +7994,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery UI - v1.11.4+CommonJS - 2015-08-28
@@ -8522,7 +8575,7 @@ var widget = $.widget;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10561,14 +10614,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(jQuery) {!function(a){a.fn.datepicker.dates["zh-CN"]={days:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],daysShort:["周日","周一","周二","周三","周四","周五","周六"],daysMin:["日","一","二","三","四","五","六"],months:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],monthsShort:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],today:"今日",clear:"清除",format:"yyyy年mm月dd日",titleFormat:"yyyy年mm月",weekStart:1}}(jQuery);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -12214,12 +12267,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 27 */
 /***/ (function(module, exports) {
 
@@ -12265,75 +12312,93 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
 /* 34 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-form-uploader\">\r\n    <input type=\"file\" class=\"c-form-uploader-input\" >\r\n    <span class=\"form-control c-form-uploader-file\"></span>\r\n    <button class=\"btn btn-default c-form-uploader-select\">选择文件</button>\r\n</div>";
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 35 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-loading\">\r\n    <div class=\"c-loading-animation\">\r\n        <svg class=\"c-loading-circle\" viewBox=\"20 20 40 40\">\r\n            <circle class=\"c-loading-circle-path\" cx=\"40\" cy=\"40\" r=\"10\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\r\n        </svg>\r\n    </div>\r\n    <div class=\"c-loading-txt\">加载中</div>\r\n</div>";
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 36 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"modal-dialog\">\r\n    <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n            <button type=\"button\" class=\"close c-modal-close\"><span>&times;</span></button>\r\n            <h4 class=\"modal-title\"></h4>\r\n        </div>\r\n        <div class=\"modal-body\"></div>\r\n        <div class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default c-modal-cancel\">取消</button>\r\n            <button type=\"button\" class=\"btn btn-primary c-modal-ok\">确定</button>\r\n        </div>\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"c-form-uploader\">\r\n    <input type=\"file\" class=\"c-form-uploader-input\" >\r\n    <span class=\"form-control c-form-uploader-file\"></span>\r\n    <button class=\"btn btn-default c-form-uploader-select\">选择文件</button>\r\n</div>";
 
 /***/ }),
 /* 37 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-pager\" id=\"pager\">\r\n    <div class=\"c-pager-summary\">共有<strong>&nbsp;{{ itemTotal }}条&nbsp;</strong>和<strong>&nbsp;{{ pageTotal }}页</strong>， 每页显示：<span class=\"c-pager-size\">{{ pageLength }}</span>条</div>\r\n    <ul class=\"c-pager-list\">\r\n        <li class=\"c-pager-item c-pager-first\" v-bind:class=\"{ 'c-pager-item-disable': prevDisable }\"><a v-bind:href=\"firstPage.url\" v-on:click.prevent=\"firstClick\">«</a></li>\r\n        <li class=\"c-pager-item c-pager-prev\" v-bind:class=\"{ 'c-pager-item-disable': prevDisable }\"><a v-bind:href=\"prevPage.url\" v-on:click.prevent=\"prevClick\">‹</a></li>\r\n        <li class=\"c-pager-ellipsis\" v-show=\"leftEllipsis\"> …</li>\r\n        <li class=\"c-pager-item\" v-for=\"page in visiblePages\" v-bind:class=\"{ 'c-pager-item-active': page.num == pageNo }\"><a v-bind:href=\"page.url\" v-on:click.prevent=\"pageClick(page.num)\">{{ page.num }}</a></li>\r\n        <li class=\"c-pager-ellipsis\" v-show=\"rightEllipsis\">…</li>\r\n        <li class=\"c-pager-item c-pager-next\" v-bind:class=\"{ 'c-pager-item-disable': nextDisable }\"><a v-bind:href=\"nextPage.url\" v-on:click.prevent=\"nextClick\">›</a></li>\r\n        <li class=\"c-pager-item c-pager-last\" v-bind:class=\"{ 'c-pager-item-disable': nextDisable }\"><a v-bind:href=\"lastPage.url\" v-on:click.prevent=\"lastClick\">»</a></li>\r\n    </ul>\r\n    <div class=\"c-pager-jump\"><input type=\"number\" v-model.number=\"jumpPage\"/><a href=\"javascript:;\" v-on:click=\"jumpClick\">Go</a></div>\r\n</div>";
+module.exports = "<div class=\"c-loading\">\r\n    <div class=\"c-loading-animation\">\r\n        <svg class=\"c-loading-circle\" viewBox=\"20 20 40 40\">\r\n            <circle class=\"c-loading-circle-path\" cx=\"40\" cy=\"40\" r=\"10\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\r\n        </svg>\r\n    </div>\r\n    <div class=\"c-loading-txt\">加载中</div>\r\n</div>";
 
 /***/ }),
 /* 38 */
 /***/ (function(module, exports) {
 
-module.exports = "<span class=\"c-panel-tab\">\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-chart\"></a>\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-data\"></a>\r\n</span>";
+module.exports = "<div class=\"modal-dialog\">\r\n    <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n            <button type=\"button\" class=\"close c-modal-close\"><span>&times;</span></button>\r\n            <h4 class=\"modal-title\"></h4>\r\n        </div>\r\n        <div class=\"modal-body\"></div>\r\n        <div class=\"modal-footer\">\r\n            <button type=\"button\" class=\"btn btn-default c-modal-cancel\">取消</button>\r\n            <button type=\"button\" class=\"btn btn-primary c-modal-ok\">确定</button>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 39 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-rangepicker\">\r\n    <div class=\"c-rangepicker-wrap\">\r\n        <i class=\"c-rangepicker-icon\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-rangepicker-input\">\r\n        <div class=\"c-rangepicker-month-wrap\" style=\"display: none;\">\r\n            <div class=\"c-rangepicker-month-calendars\">\r\n                <div class=\"c-rangepicker-month-start\">\r\n                    <h3>起始时间</h3>\r\n                    <div class=\"c-rangepicker-month-start-calendar\"></div>\r\n                </div>\r\n                <div class=\"c-rangepicker-month-end\">\r\n                    <h3>终止时间</h3>\r\n                    <div class=\"c-rangepicker-month-end-calendar\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"c-rangepicker-month-operation\">\r\n                <a class=\"btn btn-sm btn-success c-rangepicker-month-ok\" href=\"javascript:;\">确定</a>\r\n                <a class=\"btn btn-sm btn-default c-rangepicker-month-cancel\" href=\"javascript:;\">取消</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-rangepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-rangepicker-shortcut-list\">\r\n            <!-- <li class=\"c-rangepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-rangepicker-shortcut-item c-rangepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"c-pager\" id=\"pager\">\r\n    <div class=\"c-pager-summary\">共有<strong>&nbsp;{{ itemTotal }}条&nbsp;</strong>和<strong>&nbsp;{{ pageTotal }}页</strong>， 每页显示：<span class=\"c-pager-size\">{{ pageLength }}</span>条</div>\r\n    <ul class=\"c-pager-list\">\r\n        <li class=\"c-pager-item c-pager-first\" v-bind:class=\"{ 'c-pager-item-disable': prevDisable }\"><a v-bind:href=\"firstPage.url\" v-on:click.prevent=\"firstClick\">«</a></li>\r\n        <li class=\"c-pager-item c-pager-prev\" v-bind:class=\"{ 'c-pager-item-disable': prevDisable }\"><a v-bind:href=\"prevPage.url\" v-on:click.prevent=\"prevClick\">‹</a></li>\r\n        <li class=\"c-pager-ellipsis\" v-show=\"leftEllipsis\"> …</li>\r\n        <li class=\"c-pager-item\" v-for=\"page in visiblePages\" v-bind:class=\"{ 'c-pager-item-active': page.num == pageNo }\"><a v-bind:href=\"page.url\" v-on:click.prevent=\"pageClick(page.num)\">{{ page.num }}</a></li>\r\n        <li class=\"c-pager-ellipsis\" v-show=\"rightEllipsis\">…</li>\r\n        <li class=\"c-pager-item c-pager-next\" v-bind:class=\"{ 'c-pager-item-disable': nextDisable }\"><a v-bind:href=\"nextPage.url\" v-on:click.prevent=\"nextClick\">›</a></li>\r\n        <li class=\"c-pager-item c-pager-last\" v-bind:class=\"{ 'c-pager-item-disable': nextDisable }\"><a v-bind:href=\"lastPage.url\" v-on:click.prevent=\"lastClick\">»</a></li>\r\n    </ul>\r\n    <div class=\"c-pager-jump\"><input type=\"number\" v-model.number=\"jumpPage\"/><a href=\"javascript:;\" v-on:click=\"jumpClick\">Go</a></div>\r\n</div>";
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-summary\">\r\n    <div class=\"row c-summary-list\">\r\n        <div v-bind:class=\"['col-xs-' + span]\" v-for=\"item in list\">\r\n            <div class=\"c-summary-item\">\r\n                <div class=\"c-summary-item-bd\">\r\n                    <span class=\"c-summary-item-title\">{{ item.title }}</span>\r\n                    <span class=\"c-summary-item-value\" v-bind:style=\"{ color: item.color }\">\r\n                        <span class=\"c-summary-item-value-num odometer\">--</span>\r\n                        <span class=\"c-summary-item-value-unit\" v-if=\"item.unit\">{{ item.unit }}</span>\r\n                    </span>\r\n                    <img class=\"c-summary-item-icon\" v-bind:src=\"item.icon\" v-if=\"item.icon\">\r\n                </div>\r\n                <div class=\"c-summary-item-ft\" v-bind:style=\"{ 'background-color': item.color }\">\r\n                    <span class=\"c-summary-item-extra\" v-if=\"item.extra\">{{ item.extra }}</span>\r\n                    <svg width=\"44\" height=\"16\">\r\n                        <rect x=\"0\" y=\"0\" width=\"8\" height=\"16\"/>\r\n                        <rect x=\"9\" y=\"2\" width=\"8\" height=\"14\"/>\r\n                        <rect x=\"18\" y=\"8\" width=\"8\" height=\"8\"/>\r\n                        <rect x=\"27\" y=\"6\" width=\"8\" height=\"10\"/>\r\n                        <rect x=\"36\" y=\"4\" width=\"8\" height=\"12\"/>\r\n                    </svg>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+module.exports = "<span class=\"c-panel-tab\">\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-chart\"></a>\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-data\"></a>\r\n</span>";
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table-local\">\r\n    <div class=\"c-table-local-table\"></div>\r\n    <div class=\"c-table-local-pager\"></div>\r\n</div>";
+module.exports = "<div class=\"c-rangepicker\">\r\n    <div class=\"c-rangepicker-wrap\">\r\n        <i class=\"c-rangepicker-icon\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-rangepicker-input\">\r\n        <div class=\"c-rangepicker-month-wrap\" style=\"display: none;\">\r\n            <div class=\"c-rangepicker-month-calendars\">\r\n                <div class=\"c-rangepicker-month-start\">\r\n                    <h3>起始时间</h3>\r\n                    <div class=\"c-rangepicker-month-start-calendar\"></div>\r\n                </div>\r\n                <div class=\"c-rangepicker-month-end\">\r\n                    <h3>终止时间</h3>\r\n                    <div class=\"c-rangepicker-month-end-calendar\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"c-rangepicker-month-operation\">\r\n                <a class=\"btn btn-sm btn-success c-rangepicker-month-ok\" href=\"javascript:;\">确定</a>\r\n                <a class=\"btn btn-sm btn-default c-rangepicker-month-cancel\" href=\"javascript:;\">取消</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-rangepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-rangepicker-shortcut-list\">\r\n            <!-- <li class=\"c-rangepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-rangepicker-shortcut-item c-rangepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 42 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table-remote\">\r\n    <div class=\"c-table-remote-table\"></div>\r\n    <div class=\"c-table-remote-pager\"></div>\r\n</div>";
+module.exports = "<div class=\"c-summary\">\r\n    <div class=\"row c-summary-list\">\r\n        <div v-bind:class=\"['col-xs-' + span]\" v-for=\"item in list\">\r\n            <div class=\"c-summary-item\">\r\n                <div class=\"c-summary-item-bd\">\r\n                    <span class=\"c-summary-item-title\">{{ item.title }}</span>\r\n                    <span class=\"c-summary-item-value\" v-bind:style=\"{ color: item.color }\">\r\n                        <span class=\"c-summary-item-value-num odometer\">--</span>\r\n                        <span class=\"c-summary-item-value-unit\" v-if=\"item.unit\">{{ item.unit }}</span>\r\n                    </span>\r\n                    <img class=\"c-summary-item-icon\" v-bind:src=\"item.icon\" v-if=\"item.icon\">\r\n                </div>\r\n                <div class=\"c-summary-item-ft\" v-bind:style=\"{ 'background-color': item.color }\">\r\n                    <span class=\"c-summary-item-extra\" v-if=\"item.extra\">{{ item.extra }}</span>\r\n                    <svg width=\"44\" height=\"16\">\r\n                        <rect x=\"0\" y=\"0\" width=\"8\" height=\"16\"/>\r\n                        <rect x=\"9\" y=\"2\" width=\"8\" height=\"14\"/>\r\n                        <rect x=\"18\" y=\"8\" width=\"8\" height=\"8\"/>\r\n                        <rect x=\"27\" y=\"6\" width=\"8\" height=\"10\"/>\r\n                        <rect x=\"36\" y=\"4\" width=\"8\" height=\"12\"/>\r\n                    </svg>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table\" v-bind:class=\"{ 'c-table-full': full }\">\r\n    <table class=\"c-table-table\">\r\n        <thead>\r\n            <tr>\r\n                <th v-for=\"item in headers\" v-show=\"item.show\" v-bind:class=\"item.classMap\" v-bind:style=\"item.styleMap\" v-on:click=\"headerClick(item)\">{{ item.title }}</th>\r\n                <th v-if=\"enableDetail || enableRemove || enableEdit\">操作</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody v-if=\"list.length > 0\">\r\n            <tr v-for=\"item in list\">\r\n                <td v-for=\"hd in headers\" v-show=\"hd.show\" v-bind:class=\"hd.classMap\" v-bind:style=\"hd.styleMap\">{{ item[hd.key] === undefined ? '--' : item[hd.key] }}{{ hd.unit }}</td>\r\n                <td v-if=\"enableDetail || enableRemove || enableEdit\">\r\n                    <button class=\"btn btn-primary\" v-on:click=\"detailClick(item)\" v-if=\"enableDetail\">详情</button>\r\n                    <button class=\"btn btn-danger\" v-on:click=\"removeClick(item)\" v-if=\"enableRemove\">删除</button>\r\n                    <button class=\"btn btn-default\" v-on:click=\"editClick(item)\" v-if=\"enableEdit\">编辑</button>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n        <tbody v-if=\"list.length == 0\">\r\n            <tr>\r\n                <td class=\"c-table-empty\" v-bind:colspan=\"headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)\"><i class=\"glyphicon glyphicon-info-sign\"></i><span>暂无数据</span></td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>";
+module.exports = "<span class=\"c-switch\">\r\n    <span class=\"c-switch-btn c-switch-btn-on\"></span>\r\n    <span class=\"c-switch-btn c-switch-btn-off\"></span>\r\n</span>";
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-tag\">\r\n    <ul class=\"c-tag-list\">\r\n        <li class=\"c-tag-item\" v-for=\"tag in tags\" v-bind:class=\"{ 'c-tip-anchor': tag.tip }\">\r\n            <a class=\"c-tag-btn btn\" href=\"javascript:;\" v-on:click=\"itemClick(tag)\" v-bind:class=\"{ 'btn-default': !tag.active, 'btn-primary': tag.active }\">{{ tag.title }}</a>\r\n            <div class=\"c-tip\" v-if=\"tag.tip\">\r\n                <div class=\"c-tip-wrap\" v-html=\"tag.tip\"></div>\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>";
+module.exports = "<div class=\"c-table-local\">\r\n    <div class=\"c-table-local-table\"></div>\r\n    <div class=\"c-table-local-pager\"></div>\r\n</div>";
 
 /***/ }),
 /* 45 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"c-table-remote\">\r\n    <div class=\"c-table-remote-table\"></div>\r\n    <div class=\"c-table-remote-pager\"></div>\r\n</div>";
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"c-table\" v-bind:class=\"{ 'c-table-full': full }\">\r\n    <table class=\"c-table-table\">\r\n        <thead>\r\n            <tr>\r\n                <th v-for=\"item in headers\" v-show=\"item.show\" v-bind:class=\"item.classMap\" v-bind:style=\"item.styleMap\" v-on:click=\"headerClick(item)\">{{ item.title }}</th>\r\n                <th v-if=\"enableDetail || enableRemove || enableEdit\">操作</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody v-if=\"list.length > 0\">\r\n            <tr v-for=\"item in list\">\r\n                <td v-for=\"hd in headers\" v-show=\"hd.show\" v-bind:class=\"hd.classMap\" v-bind:style=\"hd.styleMap\">{{ item[hd.key] === undefined ? '--' : item[hd.key] }}{{ hd.unit }}</td>\r\n                <td v-if=\"enableDetail || enableRemove || enableEdit\">\r\n                    <button class=\"btn btn-primary\" v-on:click=\"detailClick(item)\" v-if=\"enableDetail\">详情</button>\r\n                    <button class=\"btn btn-danger\" v-on:click=\"removeClick(item)\" v-if=\"enableRemove\">删除</button>\r\n                    <button class=\"btn btn-default\" v-on:click=\"editClick(item)\" v-if=\"enableEdit\">编辑</button>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n        <tbody v-if=\"list.length == 0\">\r\n            <tr>\r\n                <td class=\"c-table-empty\" v-bind:colspan=\"headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)\"><i class=\"glyphicon glyphicon-info-sign\"></i><span>暂无数据</span></td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>";
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"c-tag\">\r\n    <ul class=\"c-tag-list\">\r\n        <li class=\"c-tag-item\" v-for=\"tag in tags\" v-bind:class=\"{ 'c-tip-anchor': tag.tip }\">\r\n            <a class=\"c-tag-btn btn\" href=\"javascript:;\" v-on:click=\"itemClick(tag)\" v-bind:class=\"{ 'btn-default': !tag.active, 'btn-primary': tag.active }\">{{ tag.title }}</a>\r\n            <div class=\"c-tip\" v-if=\"tag.tip\">\r\n                <div class=\"c-tip-wrap\" v-html=\"tag.tip\"></div>\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>";
+
+/***/ }),
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./zh-cn": 7,
-	"./zh-cn.js": 7
+	"./zh-cn": 8,
+	"./zh-cn.js": 8
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -12349,10 +12414,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 45;
+webpackContext.id = 48;
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function() {
@@ -13013,7 +13078,7 @@ webpackContext.id = 45;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $ = __webpack_require__(0);
@@ -13163,10 +13228,10 @@ module.exports = {
 };
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var View = __webpack_require__(8);
+var View = __webpack_require__(9);
 
 var EventListeners = {
 
@@ -13267,7 +13332,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
