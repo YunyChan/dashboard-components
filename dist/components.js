@@ -77,9 +77,9 @@ module.exports = jQuery;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Model = __webpack_require__(50);
+var Model = __webpack_require__(49);
 var View = __webpack_require__(9);
-var Module = __webpack_require__(51);
+var Module = __webpack_require__(50);
 
 module.exports = {
     Model: Model,
@@ -314,7 +314,7 @@ function IsShowRightEllipsis() {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Vue) {var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(46);
+var tpl = __webpack_require__(45);
 
 var AutoFullMaxKeyLength = 6;
 
@@ -2283,7 +2283,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             var aliasedRequire = require;
-            __webpack_require__(48)("./" + name);
+            __webpack_require__(47)("./" + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {}
     }
@@ -4955,7 +4955,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(52)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
 
 /***/ }),
 /* 6 */
@@ -5026,7 +5026,7 @@ function Hide() {
 
 __webpack_require__(33);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(43);
+var tpl = __webpack_require__(42);
 
 function Tag(conf) {
     this.target = conf.target;
@@ -5568,7 +5568,6 @@ function SetTitle(title) {
 
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
-var tabsHTML = __webpack_require__(40);
 var Switch = __webpack_require__(7);
 
 function Panel(conf) {
@@ -5669,7 +5668,7 @@ __webpack_require__(24);
 __webpack_require__(25);
 var $ = __webpack_require__(0);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(41);
+var tpl = __webpack_require__(40);
 var moment = __webpack_require__(5);
 
 function RangePicker(conf) {
@@ -5973,9 +5972,9 @@ function HideMonth(){
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(32);
-var Odometer = __webpack_require__(49);
+var Odometer = __webpack_require__(48);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(42);
+var tpl = __webpack_require__(41);
 var Vue = __webpack_require__(2);
 var $ = __webpack_require__(0);
 
@@ -6214,7 +6213,7 @@ function Change(index) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(44);
+var tpl = __webpack_require__(43);
 var Pager = __webpack_require__(3);
 var Table = __webpack_require__(4);
 
@@ -6299,7 +6298,7 @@ function ShowCol(){
 /***/ (function(module, exports, __webpack_require__) {
 
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(45);
+var tpl = __webpack_require__(44);
 var Pager = __webpack_require__(3);
 var Table = __webpack_require__(4);
 
@@ -6376,7 +6375,7 @@ function ShowCol(){
 __webpack_require__(35);
 var Vue = __webpack_require__(2);
 var MVC = __webpack_require__(1);
-var tpl = __webpack_require__(47);
+var tpl = __webpack_require__(46);
 
 function Tag(conf) {
     this.target = conf.target;
@@ -12348,52 +12347,46 @@ module.exports = "<div class=\"c-pager\" id=\"pager\">\r\n    <div class=\"c-pag
 /* 40 */
 /***/ (function(module, exports) {
 
-module.exports = "<span class=\"c-panel-tab\">\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-chart\"></a>\r\n    <a href=\"javascript:;\" class=\"c-panel-tab-entry c-panel-tab-entry-data\"></a>\r\n</span>";
+module.exports = "<div class=\"c-rangepicker\">\r\n    <div class=\"c-rangepicker-wrap\">\r\n        <i class=\"c-rangepicker-icon\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-rangepicker-input\">\r\n        <div class=\"c-rangepicker-month-wrap\" style=\"display: none;\">\r\n            <div class=\"c-rangepicker-month-calendars\">\r\n                <div class=\"c-rangepicker-month-start\">\r\n                    <h3>起始时间</h3>\r\n                    <div class=\"c-rangepicker-month-start-calendar\"></div>\r\n                </div>\r\n                <div class=\"c-rangepicker-month-end\">\r\n                    <h3>终止时间</h3>\r\n                    <div class=\"c-rangepicker-month-end-calendar\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"c-rangepicker-month-operation\">\r\n                <a class=\"btn btn-sm btn-success c-rangepicker-month-ok\" href=\"javascript:;\">确定</a>\r\n                <a class=\"btn btn-sm btn-default c-rangepicker-month-cancel\" href=\"javascript:;\">取消</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-rangepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-rangepicker-shortcut-list\">\r\n            <!-- <li class=\"c-rangepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-rangepicker-shortcut-item c-rangepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-rangepicker\">\r\n    <div class=\"c-rangepicker-wrap\">\r\n        <i class=\"c-rangepicker-icon\"></i>\r\n        <input type=\"text\" value=\"--\" class=\"form-control c-rangepicker-input\">\r\n        <div class=\"c-rangepicker-month-wrap\" style=\"display: none;\">\r\n            <div class=\"c-rangepicker-month-calendars\">\r\n                <div class=\"c-rangepicker-month-start\">\r\n                    <h3>起始时间</h3>\r\n                    <div class=\"c-rangepicker-month-start-calendar\"></div>\r\n                </div>\r\n                <div class=\"c-rangepicker-month-end\">\r\n                    <h3>终止时间</h3>\r\n                    <div class=\"c-rangepicker-month-end-calendar\"></div>\r\n                </div>\r\n            </div>\r\n            <div class=\"c-rangepicker-month-operation\">\r\n                <a class=\"btn btn-sm btn-success c-rangepicker-month-ok\" href=\"javascript:;\">确定</a>\r\n                <a class=\"btn btn-sm btn-default c-rangepicker-month-cancel\" href=\"javascript:;\">取消</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"c-rangepicker-shortcut\" style=\"display: none;\">\r\n        <ul class=\"c-rangepicker-shortcut-list\">\r\n            <!-- <li class=\"c-rangepicker-shortcut-item\" data-range=\"0\">今天</li> -->\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"1\">昨天</li>\r\n            <li class=\"c-rangepicker-shortcut-item c-rangepicker-shortcut-item-active\" data-range=\"7\">前7天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"30\">前30天</li>\r\n            <li class=\"c-rangepicker-shortcut-item\" data-range=\"90\">前90天</li>\r\n        </ul>\r\n    </div>\r\n</div>";
+module.exports = "<div class=\"c-summary\">\r\n    <div class=\"row c-summary-list\">\r\n        <div v-bind:class=\"['col-xs-' + span]\" v-for=\"item in list\">\r\n            <div class=\"c-summary-item\">\r\n                <div class=\"c-summary-item-bd\">\r\n                    <span class=\"c-summary-item-title\">{{ item.title }}</span>\r\n                    <span class=\"c-summary-item-value\" v-bind:style=\"{ color: item.color }\">\r\n                        <span class=\"c-summary-item-value-num odometer\">--</span>\r\n                        <span class=\"c-summary-item-value-unit\" v-if=\"item.unit\">{{ item.unit }}</span>\r\n                    </span>\r\n                    <img class=\"c-summary-item-icon\" v-bind:src=\"item.icon\" v-if=\"item.icon\">\r\n                </div>\r\n                <div class=\"c-summary-item-ft\" v-bind:style=\"{ 'background-color': item.color }\">\r\n                    <span class=\"c-summary-item-extra\" v-if=\"item.extra\">{{ item.extra }}</span>\r\n                    <svg width=\"44\" height=\"16\">\r\n                        <rect x=\"0\" y=\"0\" width=\"8\" height=\"16\"/>\r\n                        <rect x=\"9\" y=\"2\" width=\"8\" height=\"14\"/>\r\n                        <rect x=\"18\" y=\"8\" width=\"8\" height=\"8\"/>\r\n                        <rect x=\"27\" y=\"6\" width=\"8\" height=\"10\"/>\r\n                        <rect x=\"36\" y=\"4\" width=\"8\" height=\"12\"/>\r\n                    </svg>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ }),
 /* 42 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-summary\">\r\n    <div class=\"row c-summary-list\">\r\n        <div v-bind:class=\"['col-xs-' + span]\" v-for=\"item in list\">\r\n            <div class=\"c-summary-item\">\r\n                <div class=\"c-summary-item-bd\">\r\n                    <span class=\"c-summary-item-title\">{{ item.title }}</span>\r\n                    <span class=\"c-summary-item-value\" v-bind:style=\"{ color: item.color }\">\r\n                        <span class=\"c-summary-item-value-num odometer\">--</span>\r\n                        <span class=\"c-summary-item-value-unit\" v-if=\"item.unit\">{{ item.unit }}</span>\r\n                    </span>\r\n                    <img class=\"c-summary-item-icon\" v-bind:src=\"item.icon\" v-if=\"item.icon\">\r\n                </div>\r\n                <div class=\"c-summary-item-ft\" v-bind:style=\"{ 'background-color': item.color }\">\r\n                    <span class=\"c-summary-item-extra\" v-if=\"item.extra\">{{ item.extra }}</span>\r\n                    <svg width=\"44\" height=\"16\">\r\n                        <rect x=\"0\" y=\"0\" width=\"8\" height=\"16\"/>\r\n                        <rect x=\"9\" y=\"2\" width=\"8\" height=\"14\"/>\r\n                        <rect x=\"18\" y=\"8\" width=\"8\" height=\"8\"/>\r\n                        <rect x=\"27\" y=\"6\" width=\"8\" height=\"10\"/>\r\n                        <rect x=\"36\" y=\"4\" width=\"8\" height=\"12\"/>\r\n                    </svg>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
+module.exports = "<span class=\"c-switch\">\r\n    <span class=\"c-switch-btn c-switch-btn-on\"></span>\r\n    <span class=\"c-switch-btn c-switch-btn-off\"></span>\r\n</span>";
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports) {
 
-module.exports = "<span class=\"c-switch\">\r\n    <span class=\"c-switch-btn c-switch-btn-on\"></span>\r\n    <span class=\"c-switch-btn c-switch-btn-off\"></span>\r\n</span>";
+module.exports = "<div class=\"c-table-local\">\r\n    <div class=\"c-table-local-table\"></div>\r\n    <div class=\"c-table-local-pager\"></div>\r\n</div>";
 
 /***/ }),
 /* 44 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table-local\">\r\n    <div class=\"c-table-local-table\"></div>\r\n    <div class=\"c-table-local-pager\"></div>\r\n</div>";
+module.exports = "<div class=\"c-table-remote\">\r\n    <div class=\"c-table-remote-table\"></div>\r\n    <div class=\"c-table-remote-pager\"></div>\r\n</div>";
 
 /***/ }),
 /* 45 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table-remote\">\r\n    <div class=\"c-table-remote-table\"></div>\r\n    <div class=\"c-table-remote-pager\"></div>\r\n</div>";
+module.exports = "<div class=\"c-table\" v-bind:class=\"{ 'c-table-full': full }\">\r\n    <table class=\"c-table-table\">\r\n        <thead>\r\n            <tr>\r\n                <th v-for=\"item in headers\" v-show=\"item.show\" v-bind:class=\"item.classMap\" v-bind:style=\"item.styleMap\" v-on:click=\"headerClick(item)\">{{ item.title }}</th>\r\n                <th v-if=\"enableDetail || enableRemove || enableEdit\">操作</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody v-if=\"list.length > 0\">\r\n            <tr v-for=\"item in list\">\r\n                <td v-for=\"hd in headers\" v-show=\"hd.show\" v-bind:class=\"hd.classMap\" v-bind:style=\"hd.styleMap\">{{ item[hd.key] === undefined ? '--' : item[hd.key] }}{{ hd.unit }}</td>\r\n                <td v-if=\"enableDetail || enableRemove || enableEdit\">\r\n                    <button class=\"btn btn-primary\" v-on:click=\"detailClick(item)\" v-if=\"enableDetail\">详情</button>\r\n                    <button class=\"btn btn-danger\" v-on:click=\"removeClick(item)\" v-if=\"enableRemove\">删除</button>\r\n                    <button class=\"btn btn-default\" v-on:click=\"editClick(item)\" v-if=\"enableEdit\">编辑</button>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n        <tbody v-if=\"list.length == 0\">\r\n            <tr>\r\n                <td class=\"c-table-empty\" v-bind:colspan=\"headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)\"><i class=\"glyphicon glyphicon-info-sign\"></i><span>暂无数据</span></td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>";
 
 /***/ }),
 /* 46 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"c-table\" v-bind:class=\"{ 'c-table-full': full }\">\r\n    <table class=\"c-table-table\">\r\n        <thead>\r\n            <tr>\r\n                <th v-for=\"item in headers\" v-show=\"item.show\" v-bind:class=\"item.classMap\" v-bind:style=\"item.styleMap\" v-on:click=\"headerClick(item)\">{{ item.title }}</th>\r\n                <th v-if=\"enableDetail || enableRemove || enableEdit\">操作</th>\r\n            </tr>\r\n        </thead>\r\n        <tbody v-if=\"list.length > 0\">\r\n            <tr v-for=\"item in list\">\r\n                <td v-for=\"hd in headers\" v-show=\"hd.show\" v-bind:class=\"hd.classMap\" v-bind:style=\"hd.styleMap\">{{ item[hd.key] === undefined ? '--' : item[hd.key] }}{{ hd.unit }}</td>\r\n                <td v-if=\"enableDetail || enableRemove || enableEdit\">\r\n                    <button class=\"btn btn-primary\" v-on:click=\"detailClick(item)\" v-if=\"enableDetail\">详情</button>\r\n                    <button class=\"btn btn-danger\" v-on:click=\"removeClick(item)\" v-if=\"enableRemove\">删除</button>\r\n                    <button class=\"btn btn-default\" v-on:click=\"editClick(item)\" v-if=\"enableEdit\">编辑</button>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n        <tbody v-if=\"list.length == 0\">\r\n            <tr>\r\n                <td class=\"c-table-empty\" v-bind:colspan=\"headers.length + (enableDetail ? 1 : 0) + (enableRemove ? 1 : 0) + (enableEdit ? 1 : 0)\"><i class=\"glyphicon glyphicon-info-sign\"></i><span>暂无数据</span></td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>";
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports) {
-
 module.exports = "<div class=\"c-tag\">\r\n    <ul class=\"c-tag-list\">\r\n        <li class=\"c-tag-item\" v-for=\"tag in tags\" v-bind:class=\"{ 'c-tip-anchor': tag.tip }\">\r\n            <a class=\"c-tag-btn btn\" href=\"javascript:;\" v-on:click=\"itemClick(tag)\" v-bind:class=\"{ 'btn-default': !tag.active, 'btn-primary': tag.active }\">{{ tag.title }}</a>\r\n            <div class=\"c-tip\" v-if=\"tag.tip\">\r\n                <div class=\"c-tip-wrap\" v-html=\"tag.tip\"></div>\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>";
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -12414,10 +12407,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 48;
+webpackContext.id = 47;
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function() {
@@ -13078,7 +13071,7 @@ webpackContext.id = 48;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $ = __webpack_require__(0);
@@ -13228,7 +13221,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var View = __webpack_require__(9);
@@ -13332,7 +13325,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {

@@ -1,6 +1,5 @@
 var $ = require('jquery');
 var MVC = require('plugin-mvc');
-var tabsHTML = require('./tabs.html');
 var Switch = require('./../switch/main');
 
 function Panel(conf) {
