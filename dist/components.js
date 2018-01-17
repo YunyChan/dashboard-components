@@ -5578,6 +5578,7 @@ function Panel(conf) {
     this.target = conf.target;
     this.switch = conf.switch === undefined ? true : conf.switch; // switch启用与否
     this.conf = conf;
+    this.default = conf.default == 'data' ? false : true;
     this.render();
 };
 
@@ -5630,7 +5631,9 @@ function RenderSwitch(){
     panelSwitch.className = 'c-panel-switch';
     var switchCOMP = new Switch({
         target: panelSwitch,
-        state: true,
+        state: this.default,
+        onText: '图表',
+        offText: '数据',
         onChange: function(state){
             that.onSwitchChange(state);
         }
