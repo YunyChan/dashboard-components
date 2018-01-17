@@ -5576,7 +5576,7 @@ var Switch = __webpack_require__(7);
 
 function Panel(conf) {
     this.target = conf.target;
-    this.switch = conf.switch === undefined ? true : conf.switch;
+    this.switch = conf.switch === undefined ? true : conf.switch; // switch启用与否
     this.conf = conf;
     this.render();
 };
@@ -5606,7 +5606,7 @@ module.exports = Panel;
 
 function Render(){
     MVC.View.render(this);
-    if(this.tabs || this.conf['onExport']){
+    if(this.switch || this.conf['onExport']){
         this.renderHeader();
     }
 }
